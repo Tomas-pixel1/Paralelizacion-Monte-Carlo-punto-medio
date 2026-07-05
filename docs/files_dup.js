@@ -1,0 +1,11 @@
+var files_dup =
+[
+    [ "Grafica_EscalabilidadSM.py", "Grafica__EscalabilidadSM_8py_source.html", null ],
+    [ "Main.cpp", "Main_8cpp_source.html", null ],
+    [ "mainDM.cpp", "mainDM_8cpp_source.html", null ],
+    [ "mainSM.cpp", "mainSM_8cpp_source.html", null ],
+    [ "MonteCarlo.cpp", "MonteCarlo_8cpp_source.html", null ],
+    [ "MonteCarlo.hpp", "MonteCarlo_8hpp_source.html", null ],
+    [ "MonteCarloDM.cpp", "MonteCarloDM_8cpp_source.html", null ],
+    [ "MonteCarloSM.cpp", "MonteCarloSM_8cpp_source.html", null ]
+];
