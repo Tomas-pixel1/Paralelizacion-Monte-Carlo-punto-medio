@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: Páginas relacionadas</title>
+<title>Paralelización Monte Carlo de punto medio: Monte Carlo secuencial</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('Secuencial.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,19 +96,36 @@ $(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Páginas relacionadas</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Monte Carlo secuencial</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Lista de toda la documentación relacionada:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="md_Intro.html" target="_self">Paralelizacion-Monte-Carlo-punto-medio</a></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Secuencial.html" target="_self">Monte Carlo secuencial</a></td><td class="desc">Implementación del método de integración de Monte Carlo de punto medio en versión secuencial </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Distribu_xC3_xADda.html" target="_self">Monte Carlo en memoria distribuída</a></td><td class="desc">Paralelizacion de método de Monte Carlo utilizando memoria distribuída </td></tr>
-<tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Compartida.html" target="_self">Monte Carlo memoria compartida</a></td><td class="desc">Paralelizacion de método de Monte Carlo utilizando memoria compartida </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><p>Implementación del método de integración de Monte Carlo de punto medio en versión secuencial.</p>
+<p>Esta implementación contiene la versión secuencial de la clase <code><a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a></code>, en la que todas las muestras aleatorias se generan y procesan en un único hilo de ejecución.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Descripción</h2>
+<p>El algoritmo estima una integral múltiple mediante el método de Monte Carlo. Para ello:</p><ul>
+<li>Calcula el volumen de la región de integración.</li>
+<li>Genera <code>N</code> muestras aleatorias uniformemente distribuidas.</li>
+<li>Evalúa la función de usuario en cada muestra.</li>
+<li>Obtiene el promedio de las evaluaciones y lo multiplica por el volumen de integración.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Características</h2>
+<ul>
+<li>Implementación completamente secuencial.</li>
+<li>Utiliza <code>rand()</code> para generar números pseudoaleatorios.</li>
+<li>No emplea paralelización ni sincronización entre hilos.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Complejidad</h2>
+<ul>
+<li>Tiempo: O(N · d)</li>
+<li>Espacio: O(N · d), debido al almacenamiento temporal de las muestras.</li>
+</ul>
+<dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

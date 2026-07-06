@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: Páginas relacionadas</title>
+<title>Paralelización Monte Carlo de punto medio: Monte Carlo en memoria distribuída</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('Distribu_xC3_xADda.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,19 +96,55 @@ $(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Páginas relacionadas</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Monte Carlo en memoria distribuída</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Lista de toda la documentación relacionada:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="md_Intro.html" target="_self">Paralelizacion-Monte-Carlo-punto-medio</a></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Secuencial.html" target="_self">Monte Carlo secuencial</a></td><td class="desc">Implementación del método de integración de Monte Carlo de punto medio en versión secuencial </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Distribu_xC3_xADda.html" target="_self">Monte Carlo en memoria distribuída</a></td><td class="desc">Paralelizacion de método de Monte Carlo utilizando memoria distribuída </td></tr>
-<tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="Compartida.html" target="_self">Monte Carlo memoria compartida</a></td><td class="desc">Paralelizacion de método de Monte Carlo utilizando memoria compartida </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><p>Paralelizacion de método de Monte Carlo utilizando memoria distribuída.</p>
+<p>Esta implementación emplea MPI para distribuir el cálculo de la integral entre múltiples procesos. Cada proceso genera una parte de las muestras aleatorias, evalúa la función de integración sobre ellas y calcula una suma parcial. Finalmente, todas las contribuciones se combinan mediante una operación de reducción para obtener la aproximación final de la integral.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Descripción</h2>
+<p>El algoritmo sigue los siguientes pasos:</p><ul>
+<li>Calcula el volumen de la región de integración.</li>
+<li>Obtiene el número de procesos participantes y el identificador (rank) del proceso actual.</li>
+<li>Distribuye las <code>N</code> muestras entre los procesos disponibles, equilibrando la carga cuando <code>N</code> no es divisible entre el número de procesos.</li>
+<li>Cada proceso genera únicamente las muestras que le corresponden y evalúa la función sobre ellas.</li>
+<li>Las sumas parciales se combinan mediante <code>MPI_Reduce</code>.</li>
+<li>El proceso raíz (rank 0) calcula y devuelve la aproximación final de la integral.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Estrategia de paralelización</h2>
+<p>La paralelización se realiza mediante distribución de procesos:</p><ul>
+<li>Cada proceso ejecuta una parte independiente del algoritmo.</li>
+<li>La carga de trabajo se reparte de forma casi uniforme.</li>
+<li>No existe memoria compartida entre procesos.</li>
+<li>La comunicación se limita a la operación colectiva <code>MPI_Reduce</code>, utilizada para sumar las contribuciones parciales.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Características</h2>
+<ul>
+<li>Paralelización distribuida mediante MPI.</li>
+<li>Distribución equilibrada de las muestras entre procesos.</li>
+<li>Comunicación colectiva mediante <code>MPI_Reduce</code>.</li>
+<li>Escalable a múltiples nodos de un clúster o supercomputadora.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Requisitos</h2>
+<p>Para utilizar esta implementación es necesario:</p><ul>
+<li>Inicializar el entorno MPI mediante <code>MPI_Init()</code>.</li>
+<li>Ejecutar el programa con un lanzador compatible, por ejemplo <code>mpirun</code> o <code>mpiexec</code>.</li>
+<li>Finalizar el entorno MPI mediante <code>MPI_Finalize()</code>.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Complejidad</h2>
+<ul>
+<li>Tiempo: O((N · d) / p), donde <code>p</code> es el número de procesos MPI.</li>
+<li>Espacio: O(d) por proceso para almacenar cada muestra generada.</li>
+<li>Comunicación: una operación colectiva <code>MPI_Reduce</code> al finalizar el cálculo local.</li>
+</ul>
+<dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

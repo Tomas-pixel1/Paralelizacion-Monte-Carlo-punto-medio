@@ -29,7 +29,9 @@ var NAVTREE =
       [ "Objetivos", "md_Intro.html#autotoc_md1", null ],
       [ "Método Monte Carlo de punto medio", "md_Intro.html#autotoc_md2", null ]
     ] ],
-    [ "Carlo secuencial", "Monte.html", null ],
+    [ "Monte Carlo secuencial", "Secuencial.html", null ],
+    [ "Monte Carlo en memoria distribuída", "Distribu_xC3_xADda.html", null ],
+    [ "Monte Carlo memoria compartida", "Compartida.html", null ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Índice de clases", "classes.html", null ],
@@ -47,7 +49,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Grafica__EscalabilidadSM_8py_source.html"
+"Compartida.html"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';

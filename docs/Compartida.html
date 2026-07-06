@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: Carlo secuencial</title>
+<title>Paralelización Monte Carlo de punto medio: Monte Carlo memoria compartida</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('Monte.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('Compartida.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -97,77 +97,10 @@ $(document).ready(function(){initNavTree('Monte.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Carlo secuencial</div></div>
+  <div class="headertitle"><div class="title">Monte Carlo memoria compartida</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Implementación del método de integración de Monte Carlo de punto medio en versión secuencial.</p>
-<p>Paralelizacion de método de Monte Carlo utilizando memoria compartida.</p>
-<p>Paralelizacion de método de Monte Carlo utilizando memoria distribuída.</p>
-<p>Esta implementación contiene la versión secuencial de la clase <code><a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a></code>, en la que todas las muestras aleatorias se generan y procesan en un único hilo de ejecución.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Descripción</h2>
-<p>El algoritmo estima una integral múltiple mediante el método de Monte Carlo. Para ello:</p><ul>
-<li>Calcula el volumen de la región de integración.</li>
-<li>Genera <code>N</code> muestras aleatorias uniformemente distribuidas.</li>
-<li>Evalúa la función de usuario en cada muestra.</li>
-<li>Obtiene el promedio de las evaluaciones y lo multiplica por el volumen de integración.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Características</h2>
-<ul>
-<li>Implementación completamente secuencial.</li>
-<li>Utiliza <code>rand()</code> para generar números pseudoaleatorios.</li>
-<li>No emplea paralelización ni sincronización entre hilos.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
-Complejidad</h2>
-<ul>
-<li>Tiempo: O(N · d)</li>
-<li>Espacio: O(N · d), debido al almacenamiento temporal de las muestras.</li>
-</ul>
-<dl class="section date"><dt>Fecha</dt><dd>2026</dd></dl>
-<p>Esta implementación emplea MPI para distribuir el cálculo de la integral entre múltiples procesos. Cada proceso genera una parte de las muestras aleatorias, evalúa la función de integración sobre ellas y calcula una suma parcial. Finalmente, todas las contribuciones se combinan mediante una operación de reducción para obtener la aproximación final de la integral.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
-Descripción</h2>
-<p>El algoritmo sigue los siguientes pasos:</p><ul>
-<li>Calcula el volumen de la región de integración.</li>
-<li>Obtiene el número de procesos participantes y el identificador (rank) del proceso actual.</li>
-<li>Distribuye las <code>N</code> muestras entre los procesos disponibles, equilibrando la carga cuando <code>N</code> no es divisible entre el número de procesos.</li>
-<li>Cada proceso genera únicamente las muestras que le corresponden y evalúa la función sobre ellas.</li>
-<li>Las sumas parciales se combinan mediante <code>MPI_Reduce</code>.</li>
-<li>El proceso raíz (rank 0) calcula y devuelve la aproximación final de la integral.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
-Estrategia de paralelización</h2>
-<p>La paralelización se realiza mediante distribución de procesos:</p><ul>
-<li>Cada proceso ejecuta una parte independiente del algoritmo.</li>
-<li>La carga de trabajo se reparte de forma casi uniforme.</li>
-<li>No existe memoria compartida entre procesos.</li>
-<li>La comunicación se limita a la operación colectiva <code>MPI_Reduce</code>, utilizada para sumar las contribuciones parciales.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
-Características</h2>
-<ul>
-<li>Paralelización distribuida mediante MPI.</li>
-<li>Distribución equilibrada de las muestras entre procesos.</li>
-<li>Comunicación colectiva mediante <code>MPI_Reduce</code>.</li>
-<li>Escalable a múltiples nodos de un clúster o supercomputadora.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
-Requisitos</h2>
-<p>Para utilizar esta implementación es necesario:</p><ul>
-<li>Inicializar el entorno MPI mediante <code>MPI_Init()</code>.</li>
-<li>Ejecutar el programa con un lanzador compatible, por ejemplo <code>mpirun</code> o <code>mpiexec</code>.</li>
-<li>Finalizar el entorno MPI mediante <code>MPI_Finalize()</code>.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
-Complejidad</h2>
-<ul>
-<li>Tiempo: O((N · d) / p), donde <code>p</code> es el número de procesos MPI.</li>
-<li>Espacio: O(d) por proceso para almacenar cada muestra generada.</li>
-<li>Comunicación: una operación colectiva <code>MPI_Reduce</code> al finalizar el cálculo local.</li>
-</ul>
-<dl class="section date"><dt>Fecha</dt><dd>2026</dd></dl>
+<div class="textblock"><p>Paralelizacion de método de Monte Carlo utilizando memoria compartida.</p>
 <p>Esta implementación emplea OpenMP para paralelizar el cálculo de la integral mediante la distribución de las muestras aleatorias entre múltiples hilos de ejecución. Cada hilo genera sus propios puntos de integración, evalúa la función proporcionada por el usuario y contribuye al resultado final mediante una reducción paralela.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Descripción</h2>
