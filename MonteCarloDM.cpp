@@ -16,7 +16,7 @@ MonteCarlo::MonteCarlo(){
 
 MonteCarlo::MonteCarlo(const MonteCarlo &obj){
   std::cout << "constructor de copia invocado" << std::endl;
-  int dim = obj.dimension;
+  dimension = obj.dimension;
 }
 
 MonteCarlo::~MonteCarlo(){
@@ -32,7 +32,8 @@ double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec
 }
 
 double MonteCarlo::integral(const std::vector<std::pair<double, double>>& vec, int N, const std::function<double(std::vector<double>)>& func){
-  int size, rank;//Paralelización aquí debido al alto número de iteraciones realizadas
+  int size, rank;
+  //Paralelización aquí debido al alto número de iteraciones realizadas
   MPI_Comm_size(MPI_COMM_WORLD,&size);
   MPI_Comm_rank(MPI_COMM_WORLD,&rank);
   int Nlocal = N/size;
@@ -54,12 +55,12 @@ double MonteCarlo::integral(const std::vector<std::pair<double, double>>& vec, i
   for (int i = start; i < end; i++){
     for (int j = 0; j < dimension; j++){
       comp[j]=rand() * (vec[j].second - vec[j].first)/RAND_MAX + vec[j].first;
-    }
-    contLocal += func(comp);
+    }	
+    contLocal += func(comp);//Evaluar la función en el número aleatorio y sumarlo a la acumulación local
   
   }
   double cont=0.0;
-  MPI_Reduce(&contLocal,&cont,1,MPI_DOUBLE,MPI_SUM,0,MPI_COMM_WORLD);
+  MPI_Reduce(&contLocal,&cont,1,MPI_DOUBLE,MPI_SUM,0,MPI_COMM_WORLD);//Sumar cada acumulación de cada núcleo en la variable cont
   if (rank == 0)
     return volumen * cont / N;
   return 0;
