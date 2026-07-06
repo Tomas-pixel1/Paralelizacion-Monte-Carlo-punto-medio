@@ -97,12 +97,42 @@ $(document).ready(function(){initNavTree('group__MonteCarloMPI.html',''); initRe
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Implementación MPI</div></div>
+  <div class="summary">
+<a href="#groups">Módulos</a> &#124;
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle"><div class="title">Implementación MPI<div class="ingroups"><a class="el" href="group__MonteCarloSec.html">Implementación secuencial</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Implementación del método de Monte Carlo utilizando memoria distribuida.  
-</p>
+<a href="#details">Más...</a></p>
+<div class="dynheader">
+Diagrama de colaboración de Implementación MPI:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__MonteCarloMPI.png" border="0" usemap="#agroup____MonteCarloMPI" alt=""/></div>
+<map name="agroup____MonteCarloMPI" id="agroup____MonteCarloMPI">
+<area shape="rect" title="Implementación del método de Monte Carlo utilizando memoria distribuida." alt="" coords="255,5,411,31"/>
+<area shape="rect" href="group__MonteCarloOMP.html" title="Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP)." alt="" coords="459,5,645,31"/>
+<area shape="rect" href="group__MonteCarloSec.html" title="Implementación secuencial del método de integración de Monte Carlo." alt="" coords="5,5,207,31"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
+Módulos</h2></td></tr>
+<tr class="memitem:group__MonteCarloOMP" id="r_group__MonteCarloOMP"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloOMP.html">Implementación OpenMP</a></td></tr>
+<tr class="memdesc:group__MonteCarloOMP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:gad8798e9d8749b0949f19fd2864c9254e" id="r_gad8798e9d8749b0949f19fd2864c9254e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloMPI.html#gad8798e9d8749b0949f19fd2864c9254e">fx</a> (std::vector&lt; double &gt; vec)</td></tr>
+<tr class="memdesc:gad8798e9d8749b0949f19fd2864c9254e"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Biblioteca para programación distribuida mediante MPI.  <br /></td></tr>
+<tr class="separator:gad8798e9d8749b0949f19fd2864c9254e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34bb0c518f9b929d84e0428b15f5b24f" id="r_ga34bb0c518f9b929d84e0428b15f5b24f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloMPI.html#ga34bb0c518f9b929d84e0428b15f5b24f">MonteCarlo::integralDM</a> (const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos, int N, const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;func)</td></tr>
+<tr class="memdesc:ga34bb0c518f9b929d84e0428b15f5b24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula una integral mediante el método de Monte Carlo paralelizado con memoria distribuída.  <br /></td></tr>
+<tr class="separator:ga34bb0c518f9b929d84e0428b15f5b24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <p>Implementación del método de Monte Carlo utilizando memoria distribuida. </p>
 <p>Esta implementación emplea MPI para distribuir el cálculo de la integral entre múltiples procesos. Cada proceso genera una parte de las muestras aleatorias, evalúa la función de integración sobre ellas y calcula una suma parcial. Finalmente, todas las contribuciones se combinan mediante una operación de reducción para obtener la aproximación final de la integral.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
@@ -145,7 +175,239 @@ Complejidad</h2>
 <li>Espacio: O(d)</li>
 <li>Comunicación: una reducción colectiva MPI_Reduce.</li>
 </ul>
+<dl class="section date"><dt>Fecha</dt><dd>2026</dd></dl>
+<p>Esta implementación emplea MPI para distribuir el cálculo de la integral entre múltiples procesos. Cada proceso genera una parte de las muestras aleatorias, evalúa la función de integración sobre ellas y calcula una suma parcial. Finalmente, todas las contribuciones se combinan mediante una operación de reducción para obtener la aproximación final de la integral.</p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Descripción</h2>
+<p>El algoritmo sigue los siguientes pasos:</p><ul>
+<li>Calcula el volumen de la región de integración.</li>
+<li>Obtiene el número de procesos participantes y el identificador (rank) del proceso actual.</li>
+<li>Distribuye las N muestras entre los procesos disponibles, equilibrando la carga cuando N no es divisible entre el número de procesos.</li>
+<li>Cada proceso genera únicamente las muestras que le corresponden y evalúa la función sobre ellas.</li>
+<li>Las sumas parciales se combinan mediante MPI_Reduce.</li>
+<li>El proceso raíz (rank 0) calcula y devuelve la aproximación final de la integral.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Estrategia de paralelización</h2>
+<ul>
+<li>Cada proceso ejecuta una parte independiente del algoritmo.</li>
+<li>La carga de trabajo se reparte de forma equilibrada.</li>
+<li>No existe memoria compartida entre procesos.</li>
+<li>La comunicación se limita a la operación colectiva MPI_Reduce.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md20"></a>
+Características</h2>
+<ul>
+<li>Paralelización distribuida mediante MPI.</li>
+<li>Distribución equilibrada de las muestras.</li>
+<li>Comunicación colectiva mediante MPI_Reduce.</li>
+<li>Escalable a múltiples nodos de un clúster.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md21"></a>
+Requisitos</h2>
+<ul>
+<li>Inicializar el entorno MPI mediante MPI_Init().</li>
+<li>Ejecutar con mpirun o mpiexec.</li>
+<li>Finalizar mediante MPI_Finalize().</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md22"></a>
+Complejidad</h2>
+<ul>
+<li>Tiempo: O((N·d)/p)</li>
+<li>Espacio: O(d)</li>
+<li>Comunicación: una reducción colectiva MPI_Reduce.</li>
+</ul>
 <dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="gad8798e9d8749b0949f19fd2864c9254e" name="gad8798e9d8749b0949f19fd2864c9254e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad8798e9d8749b0949f19fd2864c9254e">&#9670;&#160;</a></span>fx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fx </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>&lt; Biblioteca para programación distribuida mediante MPI. </p>
+<p>Función a integrar.</p>
+<p>Calcula el valor de la función</p>
+<p class="formulaDsp">
+\[
+f(x,y)=x^2+y^2
+\]
+</p>
+<p>utilizada como ejemplo para probar el algoritmo de integración de Monte Carlo.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>Vector que representa el punto de evaluación \((x,y)\).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Valor de la función en el punto indicado. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="mainDM_8cpp_source.html#l00024">24</a> del archivo <a class="el" href="mainDM_8cpp_source.html">mainDM.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>                                {</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> vec[0] * vec[0] + vec[1] * vec[1];</div>
+<div class="line"><span class="lineno">   26</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga34bb0c518f9b929d84e0428b15f5b24f" name="ga34bb0c518f9b929d84e0428b15f5b24f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga34bb0c518f9b929d84e0428b15f5b24f">&#9670;&#160;</a></span>integralDM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MonteCarlo::integralDM </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula una integral mediante el método de Monte Carlo paralelizado con memoria distribuída. </p>
+<p>Aproxima una integral múltiple mediante el método de Monte Carlo utilizando paralelización distribuida con MPI.</p>
+<p>Genera un conjunto de muestras aleatorias dentro de los intervalos especificados y estima el valor de la integral de la función.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intervalos</td><td>Vector de pares que define los límites inferior y superior de cada dimensión. </td></tr>
+    <tr><td class="paramname">N</td><td>Número de muestras aleatorias a generar. </td></tr>
+    <tr><td class="paramname">func</td><td>Función a integrar. Recibe un vector con las coordenadas del punto de evaluación y devuelve el valor de la función.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral.</dd></dl>
+<p>El número total de muestras se reparte entre todos los procesos disponibles. Cada proceso genera sus propios puntos aleatorios, evalúa la función sobre ellos y calcula una suma parcial. Finalmente, todas las contribuciones se combinan mediante MPI_Reduce, obteniendo la estimación final únicamente en el proceso raíz (rank 0).</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>Vector que contiene los intervalos de integración para cada dimensión. </td></tr>
+    <tr><td class="paramname">N</td><td>Número total de muestras aleatorias. </td></tr>
+    <tr><td class="paramname">func</td><td>Función a integrar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral en el proceso raíz (rank 0). Los demás procesos retornan 0.</dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>La carga de trabajo se distribuye entre los procesos de forma equilibrada. Si el número de muestras no es divisible entre el número de procesos, las muestras restantes se asignan a los primeros procesos.</dd>
+<dd>
+Es necesario haber inicializado previamente el entorno MPI mediante MPI_Init() y finalizarlo posteriormente con MPI_Finalize(). </dd></dl>
+<p>Número total de procesos MPI.</p>
+<p>Identificador (rank) del proceso actual.</p>
+<p>Número de muestras asignadas al proceso.</p>
+<p>Muestras restantes cuando N no es divisible entre los procesos.</p>
+<p>Índice inicial de las muestras asignadas al proceso.</p>
+<p>Índice final (no incluido) de las muestras asignadas.</p>
+<p>Acumulador local de las evaluaciones de la función.</p>
+<p>Punto aleatorio generado en cada iteración.</p>
+<p>Generación local de muestras aleatorias.</p>
+<p>Cada proceso genera únicamente las muestras correspondientes a su rango de trabajo y evalúa la función sobre ellas.</p>
+<p>Suma global de todas las contribuciones.</p>
+<p>Reducción global mediante MPI.</p>
+<p>Las sumas parciales calculadas por cada proceso se combinan utilizando la operación MPI_SUM. El resultado final queda almacenado únicamente en el proceso raíz (rank 0).</p>
+
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00330">330</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  333</span>                                                       {</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  336</span>    <span class="keywordtype">int</span> size;</div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  339</span>    <span class="keywordtype">int</span> rank;</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>    <span class="comment">// Obtención del número de procesos y del identificador del proceso.</span></div>
+<div class="line"><span class="lineno">  342</span>    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);</div>
+<div class="line"><span class="lineno">  343</span>    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);</div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  346</span>    <span class="keywordtype">int</span> Nlocal = N / size;</div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  349</span>    <span class="keywordtype">int</span> rest = N % size;</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>    <span class="comment">// Reparto equilibrado de las muestras restantes.</span></div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &lt; rest)</div>
+<div class="line"><span class="lineno">  353</span>        Nlocal++;</div>
+<div class="line"><span class="lineno">  354</span> </div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordtype">int</span> start = Nlocal * rank;</div>
+<div class="line"><span class="lineno">  357</span> </div>
+<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &gt;= rest)</div>
+<div class="line"><span class="lineno">  359</span>        start += rest;</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  362</span>    <span class="keywordtype">int</span> end = start + Nlocal;</div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>    <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  367</span>    <span class="keywordtype">double</span> contLocal = 0.0;</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  370</span>    std::vector&lt;double&gt; comp(vec.size());</div>
+<div class="line"><span class="lineno">  371</span> </div>
+<div class="line"><span class="lineno">  379</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = start; i &lt; end; i++){</div>
+<div class="line"><span class="lineno">  380</span> </div>
+<div class="line"><span class="lineno">  381</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
+<div class="line"><span class="lineno">  382</span>            comp[j] = rand() *</div>
+<div class="line"><span class="lineno">  383</span>                      (vec[j].second - vec[j].first) /</div>
+<div class="line"><span class="lineno">  384</span>                      RAND_MAX +</div>
+<div class="line"><span class="lineno">  385</span>                      vec[j].first;</div>
+<div class="line"><span class="lineno">  386</span>        }</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>        contLocal += func(comp);</div>
+<div class="line"><span class="lineno">  389</span>    }</div>
+<div class="line"><span class="lineno">  390</span> </div>
+<div class="line"><span class="lineno">  392</span>    <span class="keywordtype">double</span> cont = 0.0;</div>
+<div class="line"><span class="lineno">  393</span>  </div>
+<div class="line"><span class="lineno">  402</span>    MPI_Reduce(</div>
+<div class="line"><span class="lineno">  403</span>        &amp;contLocal,</div>
+<div class="line"><span class="lineno">  404</span>        &amp;cont,</div>
+<div class="line"><span class="lineno">  405</span>        1,</div>
+<div class="line"><span class="lineno">  406</span>        MPI_DOUBLE,</div>
+<div class="line"><span class="lineno">  407</span>        MPI_SUM,</div>
+<div class="line"><span class="lineno">  408</span>        0,</div>
+<div class="line"><span class="lineno">  409</span>        MPI_COMM_WORLD</div>
+<div class="line"><span class="lineno">  410</span>    );</div>
+<div class="line"><span class="lineno">  411</span> </div>
+<div class="line"><span class="lineno">  412</span>    <span class="comment">// El proceso raíz calcula la aproximación final.</span></div>
+<div class="line"><span class="lineno">  413</span>    <span class="keywordflow">if</span> (rank == 0)</div>
+<div class="line"><span class="lineno">  414</span>        <span class="keywordflow">return</span> volumen * cont / N;</div>
+<div class="line"><span class="lineno">  415</span> </div>
+<div class="line"><span class="lineno">  416</span>    <span class="comment">// Los procesos restantes no devuelven el resultado.</span></div>
+<div class="line"><span class="lineno">  417</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  418</span>}</div>
+<div class="ttc" id="agroup__MonteCarloOMP_html_ga1782ab58f5ce43d02ee85293fdf19448"><div class="ttname"><a href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">MonteCarlo::dimension</a></div><div class="ttdeci">int dimension</div><div class="ttdoc">Dimensión del espacio de integración.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8hpp_source.html#l00237">MonteCarlo.hpp:237</a></div></div>
+<div class="ttc" id="agroup__MonteCarloSec_html_ga03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00203">MonteCarlo.cpp:203</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__MonteCarloMPI_ga34bb0c518f9b929d84e0428b15f5b24f_cgraph.png" border="0" usemap="#agroup__MonteCarloMPI_ga34bb0c518f9b929d84e0428b15f5b24f_cgraph" alt=""/></div>
+<map name="agroup__MonteCarloMPI_ga34bb0c518f9b929d84e0428b15f5b24f_cgraph" id="agroup__MonteCarloMPI_ga34bb0c518f9b929d84e0428b15f5b24f_cgraph">
+<area shape="rect" title="Calcula una integral mediante el método de Monte Carlo paralelizado con memoria distribuída." alt="" coords="5,5,183,31"/>
+<area shape="rect" href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683" title="Calcula el producto de las longitudes de los intervalos." alt="" coords="231,5,409,31"/>
+<area shape="poly" title=" " alt="" coords="183,15,217,15,217,21,183,21"/>
+</map>
+</div>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

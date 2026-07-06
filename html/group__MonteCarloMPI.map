@@ -1,0 +1,5 @@
+<map id="Implementación MPI" name="Implementación MPI">
+<area shape="rect" id="Node000001" title="Implementación del método de Monte Carlo utilizando memoria distribuida." alt="" coords="255,5,411,31"/>
+<area shape="rect" id="Node000003" href="$group__MonteCarloOMP.html" title="Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP)." alt="" coords="459,5,645,31"/>
+<area shape="rect" id="Node000002" href="$group__MonteCarloSec.html" title="Implementación secuencial del método de integración de Monte Carlo." alt="" coords="5,5,207,31"/>
+</map>

@@ -6,6 +6,7 @@
 #include "MonteCarlo.hpp"
 
 /**
+ * @ingroup MonteCarloOMP
  * @brief Función a integrar.
  *
  * Calcula el valor de la función
@@ -124,7 +125,7 @@ int main(){
         double inicio = omp_get_wtime();
 
         /// Aproximación de la integral mediante Monte Carlo.
-        double I = dimensiones.integral(limites, N, fx);
+        double I = dimensiones.integralSM(limites, N, fx);
 
         /// Tiempo final del experimento.
         double fin = omp_get_wtime();

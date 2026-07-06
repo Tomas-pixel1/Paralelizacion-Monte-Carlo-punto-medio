@@ -97,12 +97,54 @@ $(document).ready(function(){initNavTree('group__MonteCarloOMP.html',''); initRe
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Implementación OpenMP</div></div>
+  <div class="summary">
+<a href="#nested-classes">Clases</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Implementación OpenMP<div class="ingroups"><a class="el" href="group__MonteCarloSec.html">Implementación secuencial</a> &raquo; <a class="el" href="group__MonteCarloMPI.html">Implementación MPI</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP).  
-</p>
+<a href="#details">Más...</a></p>
+<div class="dynheader">
+Diagrama de colaboración de Implementación OpenMP:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__MonteCarloOMP.png" border="0" usemap="#agroup____MonteCarloOMP" alt=""/></div>
+<map name="agroup____MonteCarloOMP" id="agroup____MonteCarloOMP">
+<area shape="rect" href="group__MonteCarloMPI.html" title="Implementación del método de Monte Carlo utilizando memoria distribuida." alt="" coords="5,5,161,31"/>
+<area shape="rect" title="Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP)." alt="" coords="209,5,396,31"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonteCarlo.html">MonteCarlo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementa el método de integración numérica mediante Monte Carlo.  <a href="classMonteCarlo.html#details">Más...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:gad8798e9d8749b0949f19fd2864c9254e" id="r_gad8798e9d8749b0949f19fd2864c9254e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloOMP.html#gad8798e9d8749b0949f19fd2864c9254e">fx</a> (std::vector&lt; double &gt; vec)</td></tr>
+<tr class="memdesc:gad8798e9d8749b0949f19fd2864c9254e"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Biblioteca para programación paralela con OpenMP.  <br /></td></tr>
+<tr class="separator:gad8798e9d8749b0949f19fd2864c9254e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74a1223fc838cf13be96c95c8d281376" id="r_ga74a1223fc838cf13be96c95c8d281376"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloSec.html#ga74a1223fc838cf13be96c95c8d281376">MonteCarlo::MonteCarlo</a> (const <a class="el" href="classMonteCarlo.html">MonteCarlo</a> &amp;obj)</td></tr>
+<tr class="memdesc:ga74a1223fc838cf13be96c95c8d281376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de copia.  <br /></td></tr>
+<tr class="separator:ga74a1223fc838cf13be96c95c8d281376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae63580ab262dc640fc15f98d1a1b2469" id="r_gae63580ab262dc640fc15f98d1a1b2469"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloOMP.html#gae63580ab262dc640fc15f98d1a1b2469">MonteCarlo::integralSM</a> (const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos, int N, const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;func)</td></tr>
+<tr class="memdesc:gae63580ab262dc640fc15f98d1a1b2469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula una integral mediante el método de Monte Carlo paralelizado con memoria compartida.  <br /></td></tr>
+<tr class="separator:gae63580ab262dc640fc15f98d1a1b2469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab59a7679e86d34701f8e2a063bccc93e" id="r_gab59a7679e86d34701f8e2a063bccc93e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloSec.html#gab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a> ()</td></tr>
+<tr class="memdesc:gab59a7679e86d34701f8e2a063bccc93e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor por defecto.  <br /></td></tr>
+<tr class="separator:gab59a7679e86d34701f8e2a063bccc93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga1782ab58f5ce43d02ee85293fdf19448" id="r_ga1782ab58f5ce43d02ee85293fdf19448"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">MonteCarlo::dimension</a></td></tr>
+<tr class="memdesc:ga1782ab58f5ce43d02ee85293fdf19448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dimensión del espacio de integración.  <br /></td></tr>
+<tr class="separator:ga1782ab58f5ce43d02ee85293fdf19448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <p>Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP). </p>
 <p>Esta implementación emplea OpenMP para paralelizar el cálculo de la integral mediante la distribución de las muestras aleatorias entre múltiples hilos de ejecución. Cada hilo genera sus propios puntos de integración, evalúa la función proporcionada por el usuario y contribuye al resultado final mediante una reducción paralela.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
@@ -138,7 +180,281 @@ Complejidad</h2>
 <li>Tiempo: O((N·d)/p)</li>
 <li>Espacio: O(d) por hilo</li>
 </ul>
+<dl class="section date"><dt>Fecha</dt><dd>2026</dd></dl>
+<p>Esta implementación emplea OpenMP para paralelizar el cálculo de la integral mediante la distribución de las muestras aleatorias entre múltiples hilos de ejecución. Cada hilo genera sus propios puntos de integración, evalúa la función proporcionada por el usuario y contribuye al resultado final mediante una reducción paralela.</p>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Descripción</h2>
+<p>El algoritmo realiza los siguientes pasos:</p><ul>
+<li>Calcula el volumen de la región de integración.</li>
+<li>Crea una región paralela con OpenMP.</li>
+<li>Inicializa un generador de números aleatorios independiente para cada hilo utilizando <code>std::mt19937</code>.</li>
+<li>Genera N muestras aleatorias distribuidas uniformemente dentro del dominio de integración.</li>
+<li>Evalúa la función sobre cada muestra.</li>
+<li>Combina las contribuciones de todos los hilos mediante reducción.</li>
+<li>Multiplica el promedio de las evaluaciones por el volumen de la región.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Estrategia de paralelización</h2>
+<ul>
+<li>Cada hilo usa un generador independiente.</li>
+<li>Se evita condición de carrera con variables locales.</li>
+<li>Se usa <code>reduction(+:cont)</code> para sumar resultados.</li>
+<li><code>#pragma omp for</code> distribuye iteraciones automáticamente.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Características</h2>
+<ul>
+<li>Paralelización mediante OpenMP.</li>
+<li>Generación de números aleatorios con <code>std::random_device</code> y <code>std::mt19937</code>.</li>
+<li>Reducción automática de resultados.</li>
+<li>Escalable al número de hilos disponibles.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Complejidad</h2>
+<ul>
+<li>Tiempo: O((N·d)/p)</li>
+<li>Espacio: O(d) por hilo</li>
+</ul>
 <dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="gad8798e9d8749b0949f19fd2864c9254e" name="gad8798e9d8749b0949f19fd2864c9254e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad8798e9d8749b0949f19fd2864c9254e">&#9670;&#160;</a></span>fx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fx </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>&lt; Biblioteca para programación paralela con OpenMP. </p>
+<p>Función a integrar.</p>
+<p>Calcula el valor de la función</p>
+<p class="formulaDsp">
+\[
+f(x,y)=x^2+y^2
+\]
+</p>
+<p>utilizada para evaluar el desempeño del algoritmo de integración de Monte Carlo.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>Vector que representa el punto \((x,y)\) donde se evalúa la función.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Valor de la función en el punto especificado. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="mainSM_8cpp_source.html#l00026">26</a> del archivo <a class="el" href="mainSM_8cpp_source.html">mainSM.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                                {</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> vec[0] * vec[0] + vec[1] * vec[1];</div>
+<div class="line"><span class="lineno">   28</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="gae63580ab262dc640fc15f98d1a1b2469" name="gae63580ab262dc640fc15f98d1a1b2469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae63580ab262dc640fc15f98d1a1b2469">&#9670;&#160;</a></span>integralSM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MonteCarlo::integralSM </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>intervalos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcula una integral mediante el método de Monte Carlo paralelizado con memoria compartida. </p>
+<p>Aproxima la integral mediante Monte Carlo con OpenMP.</p>
+<p>Genera un conjunto de muestras aleatorias dentro de los intervalos especificados y estima el valor de la integral de la función.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intervalos</td><td>Vector de pares que define los límites inferior y superior de cada dimensión. </td></tr>
+    <tr><td class="paramname">N</td><td>Número de muestras aleatorias a generar. </td></tr>
+    <tr><td class="paramname">func</td><td>Función a integrar. Recibe un vector con las coordenadas del punto de evaluación y devuelve el valor de la función.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00263">263</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  266</span>                                                       {</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>    <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordtype">double</span> g = volumen / N;</div>
+<div class="line"><span class="lineno">  270</span>    <span class="keywordtype">double</span> cont = 0.0;</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span><span class="preprocessor">#pragma omp parallel reduction(+:cont)</span></div>
+<div class="line"><span class="lineno">  273</span>    {</div>
+<div class="line"><span class="lineno">  274</span>        std::random_device rd;</div>
+<div class="line"><span class="lineno">  275</span>        std::mt19937 gen(rd() ^ omp_get_thread_num());</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>        std::vector&lt;double&gt; comp(<a class="code hl_variable" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">dimension</a>);</div>
+<div class="line"><span class="lineno">  278</span>        std::vector&lt;std::uniform_real_distribution&lt;double&gt;&gt; distribuciones;</div>
+<div class="line"><span class="lineno">  279</span> </div>
+<div class="line"><span class="lineno">  280</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
+<div class="line"><span class="lineno">  281</span>            distribuciones.push_back(</div>
+<div class="line"><span class="lineno">  282</span>                std::uniform_real_distribution&lt;double&gt;(</div>
+<div class="line"><span class="lineno">  283</span>                    vec[j].first,</div>
+<div class="line"><span class="lineno">  284</span>                    vec[j].second</div>
+<div class="line"><span class="lineno">  285</span>                )</div>
+<div class="line"><span class="lineno">  286</span>            );</div>
+<div class="line"><span class="lineno">  287</span>        }</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span><span class="preprocessor">#pragma omp for</span></div>
+<div class="line"><span class="lineno">  290</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; N; i++){</div>
+<div class="line"><span class="lineno">  291</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
+<div class="line"><span class="lineno">  292</span>                comp[j] = distribuciones[j](gen);</div>
+<div class="line"><span class="lineno">  293</span>            }</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>            cont += func(comp);</div>
+<div class="line"><span class="lineno">  296</span>        }</div>
+<div class="line"><span class="lineno">  297</span>    }</div>
+<div class="line"><span class="lineno">  298</span> </div>
+<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">return</span> g * cont;</div>
+<div class="line"><span class="lineno">  300</span>}</div>
+<div class="ttc" id="agroup__MonteCarloOMP_html_ga1782ab58f5ce43d02ee85293fdf19448"><div class="ttname"><a href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">MonteCarlo::dimension</a></div><div class="ttdeci">int dimension</div><div class="ttdoc">Dimensión del espacio de integración.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8hpp_source.html#l00237">MonteCarlo.hpp:237</a></div></div>
+<div class="ttc" id="agroup__MonteCarloSec_html_ga03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00203">MonteCarlo.cpp:203</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Gráfico de llamadas de esta función:</div>
+<div class="dyncontent">
+<div class="center"><img src="group__MonteCarloOMP_gae63580ab262dc640fc15f98d1a1b2469_cgraph.png" border="0" usemap="#agroup__MonteCarloOMP_gae63580ab262dc640fc15f98d1a1b2469_cgraph" alt=""/></div>
+<map name="agroup__MonteCarloOMP_gae63580ab262dc640fc15f98d1a1b2469_cgraph" id="agroup__MonteCarloOMP_gae63580ab262dc640fc15f98d1a1b2469_cgraph">
+<area shape="rect" title="Calcula una integral mediante el método de Monte Carlo paralelizado con memoria compartida." alt="" coords="5,5,180,31"/>
+<area shape="rect" href="group__MonteCarloSec.html#ga03db724f34a68fcd6f11513c16bd1683" title="Calcula el producto de las longitudes de los intervalos." alt="" coords="228,5,407,31"/>
+<area shape="poly" title=" " alt="" coords="180,15,214,15,214,21,180,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gab59a7679e86d34701f8e2a063bccc93e" name="gab59a7679e86d34701f8e2a063bccc93e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab59a7679e86d34701f8e2a063bccc93e">&#9670;&#160;</a></span>MonteCarlo() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MonteCarlo::MonteCarlo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor por defecto. </p>
+<p>Se declara privado para impedir la creación de objetos sin especificar la dimensión del problema.</p>
+<p>Este constructor está declarado como privado en la clase y únicamente muestra un mensaje indicando que no es válido crear un objeto sin especificar la dimensión. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00160">160</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>                      {</div>
+<div class="line"><span class="lineno">  161</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;No es posible d = 0&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  162</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ga74a1223fc838cf13be96c95c8d281376" name="ga74a1223fc838cf13be96c95c8d281376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74a1223fc838cf13be96c95c8d281376">&#9670;&#160;</a></span>MonteCarlo() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MonteCarlo::MonteCarlo </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMonteCarlo.html">MonteCarlo</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor de copia. </p>
+<p>Crea un nuevo objeto como copia de otro objeto <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a>.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Objeto a copiar.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Crea un nuevo objeto a partir de otro existente e informa de la invocación del constructor de copia.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Objeto <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a> que se copiará.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Nota</dt><dd>Actualmente la dimensión del objeto copiado no se asigna al nuevo objeto; únicamente se almacena en una variable local. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00176">176</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>                                           {</div>
+<div class="line"><span class="lineno">  177</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;constructor de copia invocado&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordtype">int</span> dim = obj.<a class="code hl_variable" href="group__MonteCarloOMP.html#ga1782ab58f5ce43d02ee85293fdf19448">dimension</a>;</div>
+<div class="line"><span class="lineno">  179</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="ga1782ab58f5ce43d02ee85293fdf19448" name="ga1782ab58f5ce43d02ee85293fdf19448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1782ab58f5ce43d02ee85293fdf19448">&#9670;&#160;</a></span>dimension</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MonteCarlo::dimension</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dimensión del espacio de integración. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8hpp_source.html#l00237">237</a> del archivo <a class="el" href="MonteCarlo_8hpp_source.html">MonteCarlo.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

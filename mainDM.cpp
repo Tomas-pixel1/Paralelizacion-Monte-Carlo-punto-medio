@@ -4,6 +4,7 @@
 #include "MonteCarlo.hpp"
 
 /**
+ * @ingroup MonteCarloMPI
  * @brief Función a integrar.
  *
  * Calcula el valor de la función
@@ -112,7 +113,7 @@ int main(int argc, char *argv[]){
     for (int N = 1; N < 1000000000; N *= 10){
 
         /// Aproximación de la integral calculada mediante Monte Carlo.
-        double I = dimensiones.integral(limites, N, fx);
+        double I = dimensiones.integralDM(limites, N, fx);
 
         /// El proceso raíz muestra el resultado.
         if (rank == 0){

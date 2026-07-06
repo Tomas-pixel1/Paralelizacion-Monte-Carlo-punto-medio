@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['método_20monte_20carlo_20de_20punto_20medio_0',['Método Monte Carlo de punto medio',['../md_Intro.html#autotoc_md2',1,'']]],
-  ['medio_1',['medio',['../md_Intro.html#autotoc_md2',1,'Método Monte Carlo de punto medio'],['../md_Intro.html',1,'Paralelizacion-Monte-Carlo-punto-medio']]],
-  ['monte_20carlo_20de_20punto_20medio_2',['Método Monte Carlo de punto medio',['../md_Intro.html#autotoc_md2',1,'']]],
-  ['monte_20carlo_20punto_20medio_3',['Paralelizacion-Monte-Carlo-punto-medio',['../md_Intro.html',1,'']]],
-  ['montecarlo_4',['montecarlo',['../classMonteCarlo.html',1,'MonteCarlo'],['../group__MonteCarloSec.html#gab2dd560f7a173b562c449596807d5a41',1,'MonteCarlo::MonteCarlo(int d)'],['../group__MonteCarloSec.html#ga74a1223fc838cf13be96c95c8d281376',1,'MonteCarlo::MonteCarlo(const MonteCarlo &amp;obj)'],['../group__MonteCarloSec.html#gab59a7679e86d34701f8e2a063bccc93e',1,'MonteCarlo::MonteCarlo()']]],
-  ['montecarlo_2ecpp_5',['MonteCarlo.cpp',['../MonteCarlo_8cpp.html',1,'']]],
-  ['montecarlodm_2ecpp_6',['MonteCarloDM.cpp',['../MonteCarloDM_8cpp.html',1,'']]],
-  ['montecarlosm_2ecpp_7',['MonteCarloSM.cpp',['../MonteCarloSM_8cpp.html',1,'']]],
-  ['mpi_8',['Implementación MPI',['../group__MonteCarloMPI.html',1,'']]]
+  ['implementación_20mpi_0',['Implementación MPI',['../group__MonteCarloMPI.html',1,'']]],
+  ['implementación_20openmp_1',['Implementación OpenMP',['../group__MonteCarloOMP.html',1,'']]],
+  ['implementación_20secuencial_2',['Implementación secuencial',['../group__MonteCarloSec.html',1,'']]],
+  ['integral_3',['integral',['../group__MonteCarloSec.html#gaeec6074dc29aa23a56cf27ef6b2de7d4',1,'MonteCarlo']]],
+  ['integraldm_4',['integralDM',['../group__MonteCarloMPI.html#ga34bb0c518f9b929d84e0428b15f5b24f',1,'MonteCarlo']]],
+  ['integralsm_5',['integralSM',['../group__MonteCarloOMP.html#gae63580ab262dc640fc15f98d1a1b2469',1,'MonteCarlo']]]
 ];

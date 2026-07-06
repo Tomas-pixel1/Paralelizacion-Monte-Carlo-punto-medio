@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['montecarlo_0',['montecarlo',['../group__MonteCarloSec.html#gab2dd560f7a173b562c449596807d5a41',1,'MonteCarlo::MonteCarlo(int d)'],['../group__MonteCarloSec.html#ga74a1223fc838cf13be96c95c8d281376',1,'MonteCarlo::MonteCarlo(const MonteCarlo &amp;obj)'],['../group__MonteCarloSec.html#gab59a7679e86d34701f8e2a063bccc93e',1,'MonteCarlo::MonteCarlo()']]]
+  ['integral_0',['integral',['../group__MonteCarloSec.html#gaeec6074dc29aa23a56cf27ef6b2de7d4',1,'MonteCarlo']]],
+  ['integraldm_1',['integralDM',['../group__MonteCarloMPI.html#ga34bb0c518f9b929d84e0428b15f5b24f',1,'MonteCarlo']]],
+  ['integralsm_2',['integralSM',['../group__MonteCarloOMP.html#gae63580ab262dc640fc15f98d1a1b2469',1,'MonteCarlo']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['secuencial_0',['Implementación secuencial',['../group__MonteCarloSec.html',1,'']]]
+  ['requisitos_0',['requisitos',['../group__MonteCarloMPI.html#autotoc_md9',1,'Requisitos'],['../group__MonteCarloMPI.html#autotoc_md21',1,'Requisitos']]]
 ];

@@ -3,6 +3,7 @@
 #include "MonteCarlo.hpp"
 
 /**
+ * @ingroup MonteCarloSec
  * @brief Función a integrar.
  *
  * Calcula la suma de los cuadrados de las dos componentes del vector
