@@ -65,6 +65,7 @@
 #include "MonteCarlo.hpp"
 
 /**
+ * @file MonteCarloDM.cpp
  * @brief Constructor de la clase MonteCarlo.
  *
  * Inicializa la dimensión del espacio sobre el que se realizará

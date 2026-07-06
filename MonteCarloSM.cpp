@@ -163,6 +163,7 @@ double MonteCarlo::integral(
     double cont = 0.0;
 
     /**
+     * @file MonteCarloSM.cpp
      * @brief Región paralela de OpenMP.
      *
      * Cada hilo:

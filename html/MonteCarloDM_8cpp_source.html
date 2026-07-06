@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('MonteCarloDM_8cpp_source.html',''); in
   <div class="headertitle"><div class="title">MonteCarloDM.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="MonteCarloDM_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -113,111 +113,111 @@ $(document).ready(function(){initNavTree('MonteCarloDM_8cpp_source.html',''); in
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#include &quot;MonteCarlo.hpp&quot;</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(<span class="keywordtype">int</span> d){</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a> = d;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(){</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;No es posible d = 0&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMonteCarlo.html">MonteCarlo</a> &amp;obj){</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;constructor de copia invocado&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> dim = obj.<a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><a class="code hl_function" href="classMonteCarlo.html#af53fc3a679af18b51a3002b4c1f6b6c2">MonteCarlo::~MonteCarlo</a>(){</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Destructor invocado&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="keywordtype">double</span> <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;double, double&gt;&gt;&amp; vec){</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">double</span> volumen = 1.0;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; i++){</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        volumen *= vec[i].second - vec[i].first;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">return</span> volumen;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keywordtype">double</span> <a class="code hl_function" href="classMonteCarlo.html#aeec6074dc29aa23a56cf27ef6b2de7d4">MonteCarlo::integral</a>(</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">const</span> std::vector&lt;std::pair&lt;double, double&gt;&gt;&amp; vec,</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">int</span> N,</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">const</span> std::function&lt;<span class="keywordtype">double</span>(std::vector&lt;double&gt;)&gt;&amp; func){</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">int</span> size;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">int</span> rank;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">// Obtención del número de procesos y del identificador del proceso.</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordtype">int</span> Nlocal = N / size;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordtype">int</span> rest = N % size;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="comment">// Reparto equilibrado de las muestras restantes.</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &lt; rest)</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        Nlocal++;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordtype">int</span> start = Nlocal * rank;</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &gt;= rest)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        start += rest;</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">int</span> end = start + Nlocal;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">double</span> contLocal = 0.0;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    std::vector&lt;double&gt; comp(vec.size());</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = start; i &lt; end; i++){</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            comp[j] = rand() *</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                      (vec[j].second - vec[j].first) /</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                      RAND_MAX +</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                      vec[j].first;</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        }</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        contLocal += func(comp);</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    }</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="keywordtype">double</span> cont = 0.0;</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    MPI_Reduce(</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        &amp;contLocal,</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        &amp;cont,</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        1,</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        MPI_DOUBLE,</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        MPI_SUM,</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        0,</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        MPI_COMM_WORLD</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    );</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="comment">// El proceso raíz calcula la aproximación final.</span></div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="keywordflow">if</span> (rank == 0)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">return</span> volumen * cont / N;</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="comment">// Los procesos restantes no devuelven el resultado.</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(<span class="keywordtype">int</span> d){</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a> = d;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(){</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;No es posible d = 0&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><a class="code hl_function" href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a>(<span class="keyword">const</span> <a class="code hl_class" href="classMonteCarlo.html">MonteCarlo</a> &amp;obj){</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;constructor de copia invocado&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">int</span> dim = obj.<a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><a class="code hl_function" href="classMonteCarlo.html#af53fc3a679af18b51a3002b4c1f6b6c2">MonteCarlo::~MonteCarlo</a>(){</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Destructor invocado&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">double</span> <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;double, double&gt;&gt;&amp; vec){</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">double</span> volumen = 1.0;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; i++){</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        volumen *= vec[i].second - vec[i].first;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">return</span> volumen;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keywordtype">double</span> <a class="code hl_function" href="classMonteCarlo.html#aeec6074dc29aa23a56cf27ef6b2de7d4">MonteCarlo::integral</a>(</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">const</span> std::vector&lt;std::pair&lt;double, double&gt;&gt;&amp; vec,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordtype">int</span> N,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">const</span> std::function&lt;<span class="keywordtype">double</span>(std::vector&lt;double&gt;)&gt;&amp; func){</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">int</span> size;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">int</span> rank;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="comment">// Obtención del número de procesos y del identificador del proceso.</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">int</span> Nlocal = N / size;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordtype">int</span> rest = N % size;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="comment">// Reparto equilibrado de las muestras restantes.</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &lt; rest)</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        Nlocal++;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">int</span> start = Nlocal * rank;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">if</span> (rest &amp;&amp; rank &gt;= rest)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        start += rest;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">int</span> end = start + Nlocal;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">double</span> contLocal = 0.0;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    std::vector&lt;double&gt; comp(vec.size());</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = start; i &lt; end; i++){</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            comp[j] = rand() *</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                      (vec[j].second - vec[j].first) /</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                      RAND_MAX +</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                      vec[j].first;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        contLocal += func(comp);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordtype">double</span> cont = 0.0;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    MPI_Reduce(</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        &amp;contLocal,</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        &amp;cont,</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        1,</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        MPI_DOUBLE,</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        MPI_SUM,</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        0,</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        MPI_COMM_WORLD</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    );</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <span class="comment">// El proceso raíz calcula la aproximación final.</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordflow">if</span> (rank == 0)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">return</span> volumen * cont / N;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="comment">// Los procesos restantes no devuelven el resultado.</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>}</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
 <div class="ttc" id="aclassMonteCarlo_html"><div class="ttname"><a href="classMonteCarlo.html">MonteCarlo</a></div><div class="ttdoc">Implementa el método de integración numérica mediante Monte Carlo.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8hpp_source.html#l00015">MonteCarlo.hpp:15</a></div></div>
-<div class="ttc" id="aclassMonteCarlo_html_a03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00098">MonteCarlo.cpp:98</a></div></div>
+<div class="ttc" id="aclassMonteCarlo_html_a03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00099">MonteCarlo.cpp:99</a></div></div>
 <div class="ttc" id="aclassMonteCarlo_html_a1782ab58f5ce43d02ee85293fdf19448"><div class="ttname"><a href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">MonteCarlo::dimension</a></div><div class="ttdeci">int dimension</div><div class="ttdoc">Dimensión del espacio de integración.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8hpp_source.html#l00067">MonteCarlo.hpp:67</a></div></div>
-<div class="ttc" id="aclassMonteCarlo_html_ab59a7679e86d34701f8e2a063bccc93e"><div class="ttname"><a href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a></div><div class="ttdeci">MonteCarlo()</div><div class="ttdoc">Constructor por defecto.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00057">MonteCarlo.cpp:57</a></div></div>
-<div class="ttc" id="aclassMonteCarlo_html_aeec6074dc29aa23a56cf27ef6b2de7d4"><div class="ttname"><a href="classMonteCarlo.html#aeec6074dc29aa23a56cf27ef6b2de7d4">MonteCarlo::integral</a></div><div class="ttdeci">double integral(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos, int N, const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;func)</div><div class="ttdoc">Calcula una integral mediante el método de Monte Carlo.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00122">MonteCarlo.cpp:122</a></div></div>
-<div class="ttc" id="aclassMonteCarlo_html_af53fc3a679af18b51a3002b4c1f6b6c2"><div class="ttname"><a href="classMonteCarlo.html#af53fc3a679af18b51a3002b4c1f6b6c2">MonteCarlo::~MonteCarlo</a></div><div class="ttdeci">~MonteCarlo()</div><div class="ttdoc">Destructor de la clase.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00083">MonteCarlo.cpp:83</a></div></div>
+<div class="ttc" id="aclassMonteCarlo_html_ab59a7679e86d34701f8e2a063bccc93e"><div class="ttname"><a href="classMonteCarlo.html#ab59a7679e86d34701f8e2a063bccc93e">MonteCarlo::MonteCarlo</a></div><div class="ttdeci">MonteCarlo()</div><div class="ttdoc">Constructor por defecto.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00058">MonteCarlo.cpp:58</a></div></div>
+<div class="ttc" id="aclassMonteCarlo_html_aeec6074dc29aa23a56cf27ef6b2de7d4"><div class="ttname"><a href="classMonteCarlo.html#aeec6074dc29aa23a56cf27ef6b2de7d4">MonteCarlo::integral</a></div><div class="ttdeci">double integral(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos, int N, const std::function&lt; double(std::vector&lt; double &gt;)&gt; &amp;func)</div><div class="ttdoc">Calcula una integral mediante el método de Monte Carlo.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00123">MonteCarlo.cpp:123</a></div></div>
+<div class="ttc" id="aclassMonteCarlo_html_af53fc3a679af18b51a3002b4c1f6b6c2"><div class="ttname"><a href="classMonteCarlo.html#af53fc3a679af18b51a3002b4c1f6b6c2">MonteCarlo::~MonteCarlo</a></div><div class="ttdeci">~MonteCarlo()</div><div class="ttdoc">Destructor de la clase.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00084">MonteCarlo.cpp:84</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>MonteCarloDM.cpp</b></li>
+    <li class="navelem"><a class="el" href="MonteCarloDM_8cpp.html">MonteCarloDM.cpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

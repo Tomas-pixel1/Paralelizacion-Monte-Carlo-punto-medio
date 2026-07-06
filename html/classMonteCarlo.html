@@ -165,24 +165,7 @@ Atributos privados</h2></td></tr>
 
 <p>Constructor de la clase. </p>
 <p>&lt; Biblioteca para programación paralela con OpenMP.</p>
-<p>&lt; Biblioteca para programación distribuida con MPI.</p>
-<p>Constructor de la clase <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a>.</p>
 <p>Inicializa el objeto especificando la dimensión del espacio en el que se realizará la integración.</p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>Dimensión del problema.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Inicializa la dimensión del espacio sobre el cual se realizará la integración mediante el método de Monte Carlo.</p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>Dimensión del problema.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Constructor de la clase <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a>.</p>
-<p>Inicializa la dimensión del espacio sobre el que se realizará la integración mediante el método de Monte Carlo.</p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">d</td><td>Dimensión del problema.</td></tr>
@@ -198,10 +181,10 @@ Atributos privados</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00046">46</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>                           {</div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a> = d;</div>
-<div class="line"><span class="lineno">   48</span>}</div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00047">47</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                           {</div>
+<div class="line"><span class="lineno">   48</span>  <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a> = d;</div>
+<div class="line"><span class="lineno">   49</span>}</div>
 <div class="ttc" id="aclassMonteCarlo_html_a1782ab58f5ce43d02ee85293fdf19448"><div class="ttname"><a href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">MonteCarlo::dimension</a></div><div class="ttdeci">int dimension</div><div class="ttdoc">Dimensión del espacio de integración.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8hpp_source.html#l00067">MonteCarlo.hpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -255,11 +238,11 @@ Atributos privados</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Nota</dt><dd>Actualmente la dimensión del objeto copiado únicamente se almacena en una variable local y no se asigna al nuevo objeto. </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00072">72</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                           {</div>
-<div class="line"><span class="lineno">   73</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;constructor de copia invocado&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   74</span>  <span class="keywordtype">int</span> dim = obj.<a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>;</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00073">73</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>                                           {</div>
+<div class="line"><span class="lineno">   74</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;constructor de copia invocado&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   75</span>  <span class="keywordtype">int</span> dim = obj.<a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>;</div>
+<div class="line"><span class="lineno">   76</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -282,10 +265,10 @@ Atributos privados</h2></td></tr>
 <p>Libera los recursos asociados al objeto e informa de la destrucción del mismo.</p>
 <p>Muestra un mensaje indicando la destrucción del objeto. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00083">83</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>                       {</div>
-<div class="line"><span class="lineno">   84</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Destructor invocado&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00084">84</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                       {</div>
+<div class="line"><span class="lineno">   85</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Destructor invocado&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,10 +300,10 @@ Atributos privados</h2></td></tr>
 <p>Este constructor está declarado como privado en la clase y únicamente muestra un mensaje indicando que no es válido crear un objeto sin especificar la dimensión.</p>
 <p>Este constructor está declarado como privado y evita la creación de objetos sin especificar la dimensión del problema. </p>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00057">57</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>                      {</div>
-<div class="line"><span class="lineno">   58</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;No es posible d = 0&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   59</span>}</div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00058">58</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                      {</div>
+<div class="line"><span class="lineno">   59</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;No es posible d = 0&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   60</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -358,7 +341,6 @@ Atributos privados</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calcula una integral mediante el método de Monte Carlo. </p>
-<p>Aproxima una integral múltiple utilizando el método de Monte Carlo con paralelización mediante OpenMP.</p>
 <p>Aproxima una integral múltiple mediante el método de Monte Carlo utilizando paralelización distribuida con MPI.</p>
 <p>Aproxima una integral múltiple mediante el método de Monte Carlo.</p>
 <p>Genera un conjunto de muestras aleatorias dentro de los intervalos especificados y estima el valor de la integral de la función.</p>
@@ -393,25 +375,7 @@ Atributos privados</h2></td></tr>
 <dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral en el proceso raíz (rank 0). Los demás procesos retornan 0.</dd></dl>
 <dl class="section note"><dt>Nota</dt><dd>La carga de trabajo se distribuye entre los procesos de forma equilibrada. Si el número de muestras no es divisible entre el número de procesos, las muestras restantes se asignan a los primeros procesos.</dd>
 <dd>
-Es necesario haber inicializado previamente el entorno MPI mediante <code>MPI_Init()</code> y finalizarlo posteriormente con <code>MPI_Finalize()</code>.</dd></dl>
-<p>Se generan <code>N</code> muestras aleatorias uniformemente distribuidas dentro de la región de integración. Cada hilo genera sus propias muestras, evalúa la función sobre ellas y acumula el resultado mediante una reducción paralela.</p>
-<p>Para evitar condiciones de carrera:</p><ul>
-<li>Cada hilo utiliza un generador de números aleatorios independiente basado en <code>std::mt19937</code>.</li>
-<li>Se emplea la cláusula <code>reduction(+:cont)</code> para combinar las sumas parciales de todos los hilos al finalizar la región paralela.</li>
-<li>Cada hilo dispone de un vector local para almacenar el punto generado, evitando accesos concurrentes a memoria compartida.</li>
-</ul>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vec</td><td>Vector con los intervalos de integración para cada dimensión. </td></tr>
-    <tr><td class="paramname">N</td><td>Número de muestras aleatorias. </td></tr>
-    <tr><td class="paramname">func</td><td>Función a integrar. Recibe un vector de coordenadas y devuelve el valor de la función en dicho punto.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral.</dd></dl>
-<dl class="section note"><dt>Nota</dt><dd>La calidad de la aproximación mejora al aumentar el número de muestras aleatorias.</dd>
-<dd>
-La implementación utiliza OpenMP para distribuir las iteraciones del algoritmo entre los hilos disponibles. </dd></dl>
+Es necesario haber inicializado previamente el entorno MPI mediante <code>MPI_Init()</code> y finalizarlo posteriormente con <code>MPI_Finalize()</code>. </dd></dl>
 <p>Número total de procesos MPI.</p>
 <p>Identificador (rank) del proceso actual.</p>
 <p>Número de muestras asignadas al proceso.</p>
@@ -426,33 +390,33 @@ La implementación utiliza OpenMP para distribuir las iteraciones del algoritmo 
 <p>Reducción global mediante MPI.</p>
 <p>Las sumas parciales calculadas por cada proceso se combinan utilizando la operación MPI_SUM. El resultado final queda almacenado únicamente en el proceso raíz (rank 0).</p>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00122">122</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>                                                       {</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>  <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
-<div class="line"><span class="lineno">  128</span>  <span class="keywordtype">double</span> g = volumen / N;</div>
-<div class="line"><span class="lineno">  129</span>  <span class="keywordtype">double</span> cont = 0.0;</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>  std::vector&lt;std::vector&lt;double&gt;&gt; x;</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>  <span class="comment">// Generación de muestras aleatorias y evaluación de la función.</span></div>
-<div class="line"><span class="lineno">  134</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; N; i++){</div>
-<div class="line"><span class="lineno">  135</span>    std::vector&lt;double&gt; comp;</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
-<div class="line"><span class="lineno">  138</span>      comp.push_back(</div>
-<div class="line"><span class="lineno">  139</span>          rand() * (vec[j].second - vec[j].first) / RAND_MAX</div>
-<div class="line"><span class="lineno">  140</span>          + vec[j].first</div>
-<div class="line"><span class="lineno">  141</span>      );</div>
-<div class="line"><span class="lineno">  142</span>    }</div>
-<div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span>    x.push_back(comp);</div>
-<div class="line"><span class="lineno">  145</span>    cont += func(x[i]);</div>
-<div class="line"><span class="lineno">  146</span>  }</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>  <span class="keywordflow">return</span> g * cont;</div>
-<div class="line"><span class="lineno">  149</span>}</div>
-<div class="ttc" id="aclassMonteCarlo_html_a03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00098">MonteCarlo.cpp:98</a></div></div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00123">123</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>                                                       {</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>  <span class="keywordtype">double</span> volumen = <a class="code hl_function" href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a>(vec);</div>
+<div class="line"><span class="lineno">  129</span>  <span class="keywordtype">double</span> g = volumen / N;</div>
+<div class="line"><span class="lineno">  130</span>  <span class="keywordtype">double</span> cont = 0.0;</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>  std::vector&lt;std::vector&lt;double&gt;&gt; x;</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>  <span class="comment">// Generación de muestras aleatorias y evaluación de la función.</span></div>
+<div class="line"><span class="lineno">  135</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; N; i++){</div>
+<div class="line"><span class="lineno">  136</span>    std::vector&lt;double&gt; comp;</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; j++){</div>
+<div class="line"><span class="lineno">  139</span>      comp.push_back(</div>
+<div class="line"><span class="lineno">  140</span>          rand() * (vec[j].second - vec[j].first) / RAND_MAX</div>
+<div class="line"><span class="lineno">  141</span>          + vec[j].first</div>
+<div class="line"><span class="lineno">  142</span>      );</div>
+<div class="line"><span class="lineno">  143</span>    }</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    x.push_back(comp);</div>
+<div class="line"><span class="lineno">  146</span>    cont += func(x[i]);</div>
+<div class="line"><span class="lineno">  147</span>  }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>  <span class="keywordflow">return</span> g * cont;</div>
+<div class="line"><span class="lineno">  150</span>}</div>
+<div class="ttc" id="aclassMonteCarlo_html_a03db724f34a68fcd6f11513c16bd1683"><div class="ttname"><a href="classMonteCarlo.html#a03db724f34a68fcd6f11513c16bd1683">MonteCarlo::Productorio</a></div><div class="ttdeci">double Productorio(const std::vector&lt; std::pair&lt; double, double &gt; &gt; &amp;intervalos)</div><div class="ttdoc">Calcula el producto de las longitudes de los intervalos.</div><div class="ttdef"><b>Definition</b> <a href="MonteCarlo_8cpp_source.html#l00099">MonteCarlo.cpp:99</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Gráfico de llamadas de esta función:</div>
 <div class="dyncontent">
@@ -525,16 +489,16 @@ Gráfico de llamadas de esta función:</div>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Volumen total de la región de integración. </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00098">98</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>                                                                           {</div>
-<div class="line"><span class="lineno">   99</span>  <span class="keywordtype">double</span> volumen = 1.0;</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; i++){</div>
-<div class="line"><span class="lineno">  102</span>    volumen *= vec[i].second - vec[i].first;</div>
-<div class="line"><span class="lineno">  103</span>  }</div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>  <span class="keywordflow">return</span> volumen;</div>
-<div class="line"><span class="lineno">  106</span>}</div>
+<p class="definition">Definición en la línea <a class="el" href="MonteCarlo_8cpp_source.html#l00099">99</a> del archivo <a class="el" href="MonteCarlo_8cpp_source.html">MonteCarlo.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>                                                                           {</div>
+<div class="line"><span class="lineno">  100</span>  <span class="keywordtype">double</span> volumen = 1.0;</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="classMonteCarlo.html#a1782ab58f5ce43d02ee85293fdf19448">dimension</a>; i++){</div>
+<div class="line"><span class="lineno">  103</span>    volumen *= vec[i].second - vec[i].first;</div>
+<div class="line"><span class="lineno">  104</span>  }</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>  <span class="keywordflow">return</span> volumen;</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 </div><!-- fragment --><div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">

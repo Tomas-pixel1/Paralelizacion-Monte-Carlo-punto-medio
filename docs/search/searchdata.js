@@ -2,26 +2,29 @@ var indexSectionsWithContent =
 {
   0: "cdeimoprs~",
   1: "m",
-  2: "imp~",
-  3: "d",
-  4: "cdemps"
+  2: "m",
+  3: "imp~",
+  4: "d",
+  5: "cdemps"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "variables",
-  4: "pages"
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "Todos",
   1: "Clases",
-  2: "Funciones",
-  3: "Variables",
-  4: "Páginas"
+  2: "Archivos",
+  3: "Funciones",
+  4: "Variables",
+  5: "Páginas"
 };
 

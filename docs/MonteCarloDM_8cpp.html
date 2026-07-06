@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: Lista de archivos</title>
+<title>Paralelización Monte Carlo de punto medio: Referencia del archivo MonteCarloDM.cpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('files.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('MonteCarloDM_8cpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -97,26 +97,58 @@ $(document).ready(function(){initNavTree('files.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Lista de archivos</div></div>
+  <div class="headertitle"><div class="title">Referencia del archivo MonteCarloDM.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Lista de todos los archivos documentados y con breves descripciones:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="Grafica__EscalabilidadSM_8py_source.html"><span class="icondoc"></span></a><b>Grafica_EscalabilidadSM.py</b></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="Main_8cpp_source.html"><span class="icondoc"></span></a><b>Main.cpp</b></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="mainDM_8cpp_source.html"><span class="icondoc"></span></a><b>mainDM.cpp</b></td><td class="desc"></td></tr>
-<tr id="row_3_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="mainSM_8cpp_source.html"><span class="icondoc"></span></a><b>mainSM.cpp</b></td><td class="desc"></td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="MonteCarlo_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="MonteCarlo_8cpp.html" target="_self">MonteCarlo.cpp</a></td><td class="desc">Constructor de la clase <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a> </td></tr>
-<tr id="row_5_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="MonteCarlo_8hpp_source.html"><span class="icondoc"></span></a><b>MonteCarlo.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_6_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="MonteCarloDM_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="MonteCarloDM_8cpp.html" target="_self">MonteCarloDM.cpp</a></td><td class="desc">&lt; Biblioteca para programación distribuida con MPI </td></tr>
-<tr id="row_7_" class="odd"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a href="MonteCarloSM_8cpp_source.html"><span class="icondoc"></span></a><a class="el" href="MonteCarloSM_8cpp.html" target="_self">MonteCarloSM.cpp</a></td><td class="desc">Aproxima una integral múltiple utilizando el método de Monte Carlo con paralelización mediante OpenMP </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+
+<p>&lt; Biblioteca para programación distribuida con MPI.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;mpi.h&gt;</code><br />
+<code>#include &quot;MonteCarlo.hpp&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en MonteCarloDM.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="MonteCarloDM_8cpp__incl.png" border="0" usemap="#aMonteCarloDM_8cpp" alt=""/></div>
+<map name="aMonteCarloDM_8cpp" id="aMonteCarloDM_8cpp">
+<area shape="rect" title="&lt; Biblioteca para programación distribuida con MPI." alt="" coords="139,5,286,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,71,104"/>
+<area shape="poly" title=" " alt="" coords="186,33,80,76,78,71,184,28"/>
+<area shape="rect" title=" " alt="" coords="95,79,175,104"/>
+<area shape="poly" title=" " alt="" coords="202,33,160,71,156,67,198,29"/>
+<area shape="rect" title=" " alt="" coords="224,152,287,177"/>
+<area shape="poly" title=" " alt="" coords="219,30,251,138,245,139,214,32"/>
+<area shape="rect" title=" " alt="" coords="250,79,309,104"/>
+<area shape="poly" title=" " alt="" coords="226,29,261,67,257,70,222,33"/>
+<area shape="rect" href="MonteCarlo_8hpp_source.html" title=" " alt="" coords="333,79,458,104"/>
+<area shape="poly" title=" " alt="" coords="243,28,354,71,352,76,241,33"/>
+<area shape="poly" title=" " alt="" coords="374,106,291,148,289,143,372,102"/>
+<area shape="rect" title=" " alt="" coords="352,152,439,177"/>
+<area shape="poly" title=" " alt="" coords="398,104,398,138,393,138,393,104"/>
+</map>
+</div>
+</div>
+<p><a href="MonteCarloDM_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>&lt; Biblioteca para programación distribuida con MPI. </p>
+<p>Constructor de la clase <a class="el" href="classMonteCarlo.html" title="Implementa el método de integración numérica mediante Monte Carlo.">MonteCarlo</a>.</p>
+<p>Inicializa la dimensión del espacio sobre el que se realizará la integración mediante el método de Monte Carlo.</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>Dimensión del problema. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="MonteCarloDM_8cpp_source.html">MonteCarloDM.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="MonteCarloDM_8cpp.html">MonteCarloDM.cpp</a></li>
     <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
