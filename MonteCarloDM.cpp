@@ -1,3 +1,62 @@
+/**
+ * @page Monte Carlo en memoria distribuída
+ *
+ * @brief Paralelizacion de método de Monte Carlo utilizando memoria distribuída.
+ *
+ * Esta implementación emplea MPI para distribuir el cálculo de la integral
+ * entre múltiples procesos. Cada proceso genera una parte de las muestras
+ * aleatorias, evalúa la función de integración sobre ellas y calcula una
+ * suma parcial. Finalmente, todas las contribuciones se combinan mediante
+ * una operación de reducción para obtener la aproximación final de la
+ * integral.
+ *
+ * ## Descripción
+ *
+ * El algoritmo sigue los siguientes pasos:
+ * - Calcula el volumen de la región de integración.
+ * - Obtiene el número de procesos participantes y el identificador
+ *   (rank) del proceso actual.
+ * - Distribuye las `N` muestras entre los procesos disponibles,
+ *   equilibrando la carga cuando `N` no es divisible entre el número de
+ *   procesos.
+ * - Cada proceso genera únicamente las muestras que le corresponden y
+ *   evalúa la función sobre ellas.
+ * - Las sumas parciales se combinan mediante `MPI_Reduce`.
+ * - El proceso raíz (rank 0) calcula y devuelve la aproximación final
+ *   de la integral.
+ *
+ * ## Estrategia de paralelización
+ *
+ * La paralelización se realiza mediante distribución de procesos:
+ * - Cada proceso ejecuta una parte independiente del algoritmo.
+ * - La carga de trabajo se reparte de forma casi uniforme.
+ * - No existe memoria compartida entre procesos.
+ * - La comunicación se limita a la operación colectiva `MPI_Reduce`,
+ *   utilizada para sumar las contribuciones parciales.
+ *
+ * ## Características
+ * - Paralelización distribuida mediante MPI.
+ * - Distribución equilibrada de las muestras entre procesos.
+ * - Comunicación colectiva mediante `MPI_Reduce`.
+ * - Escalable a múltiples nodos de un clúster o supercomputadora.
+ *
+ * ## Requisitos
+ *
+ * Para utilizar esta implementación es necesario:
+ * - Inicializar el entorno MPI mediante `MPI_Init()`.
+ * - Ejecutar el programa con un lanzador compatible, por ejemplo
+ *   `mpirun` o `mpiexec`.
+ * - Finalizar el entorno MPI mediante `MPI_Finalize()`.
+ *
+ * ## Complejidad
+ * - Tiempo: O((N · d) / p), donde `p` es el número de procesos MPI.
+ * - Espacio: O(d) por proceso para almacenar cada muestra generada.
+ * - Comunicación: una operación colectiva `MPI_Reduce` al finalizar el
+ *   cálculo local.
+ *
+ * @date 2026
+ */
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>

@@ -1,3 +1,34 @@
+/**
+ * @page Monte Carlo secuencial
+ *
+ * @brief Implementación del método de integración de Monte Carlo de punto medio en versión secuencial.
+ *
+ * Esta implementación contiene la versión secuencial de la clase
+ * `MonteCarlo`, en la que todas las muestras aleatorias se generan y
+ * procesan en un único hilo de ejecución.
+ *
+ * ## Descripción
+ *
+ * El algoritmo estima una integral múltiple mediante el método de
+ * Monte Carlo. Para ello:
+ * - Calcula el volumen de la región de integración.
+ * - Genera `N` muestras aleatorias uniformemente distribuidas.
+ * - Evalúa la función de usuario en cada muestra.
+ * - Obtiene el promedio de las evaluaciones y lo multiplica por el
+ *   volumen de integración.
+ *
+ * ## Características
+ * - Implementación completamente secuencial.
+ * - Utiliza `rand()` para generar números pseudoaleatorios.
+ * - No emplea paralelización ni sincronización entre hilos.
+ *
+ * ## Complejidad
+ * - Tiempo: O(N · d)
+ * - Espacio: O(N · d), debido al almacenamiento temporal de las muestras.
+ *
+ * @date 2026
+ */
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>

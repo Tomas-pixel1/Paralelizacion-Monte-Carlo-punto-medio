@@ -1,3 +1,54 @@
+/**
+ * @page Monte Carlo en memoria compartida
+ *
+ * @brief Paralelizacion de método de Monte Carlo utilizando memoria compartida.
+ *
+ * Esta implementación emplea OpenMP para paralelizar el cálculo de la
+ * integral mediante la distribución de las muestras aleatorias entre
+ * múltiples hilos de ejecución. Cada hilo genera sus propios puntos de
+ * integración, evalúa la función proporcionada por el usuario y contribuye
+ * al resultado final mediante una reducción paralela.
+ *
+ * ## Descripción
+ *
+ * El algoritmo realiza los siguientes pasos:
+ * - Calcula el volumen de la región de integración.
+ * - Crea una región paralela con OpenMP.
+ * - Inicializa un generador de números aleatorios independiente para cada
+ *   hilo utilizando `std::mt19937`.
+ * - Genera `N` muestras aleatorias distribuidas uniformemente dentro del
+ *   dominio de integración.
+ * - Evalúa la función sobre cada muestra.
+ * - Combina las contribuciones de todos los hilos mediante la cláusula
+ *   `reduction`.
+ * - Multiplica el promedio de las evaluaciones por el volumen de la región
+ *   para obtener la aproximación de la integral.
+ *
+ * ## Estrategia de paralelización
+ *
+ * Para garantizar la correcta ejecución en un entorno paralelo:
+ * - Cada hilo utiliza un generador de números pseudoaleatorios propio.
+ * - Las muestras se almacenan en vectores locales para evitar condiciones
+ *   de carrera.
+ * - La variable acumuladora se combina mediante una reducción de OpenMP.
+ * - Las iteraciones del algoritmo se distribuyen automáticamente entre los
+ *   hilos mediante `#pragma omp for`.
+ *
+ * ## Características
+ * - Paralelización mediante OpenMP.
+ * - Generación de números aleatorios con `std::random_device` y
+ *   `std::mt19937`.
+ * - Sincronización automática mediante reducción.
+ * - Escalable al número de hilos disponibles.
+ *
+ * ## Complejidad
+ * - Tiempo: O((N · d) / p), donde `p` es el número de hilos.
+ * - Espacio: O(d) por hilo para el almacenamiento temporal de las muestras.
+ *
+ * @date 2026
+ */
+
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>
