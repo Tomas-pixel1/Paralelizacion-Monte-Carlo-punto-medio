@@ -1,5 +1,5 @@
 /**
- * @page Monte Carlo en memoria distribuída
+ * @page Distribuída Monte Carlo en memoria distribuída
  *
  * @brief Paralelizacion de método de Monte Carlo utilizando memoria distribuída.
  *

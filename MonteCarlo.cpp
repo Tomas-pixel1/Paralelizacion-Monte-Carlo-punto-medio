@@ -1,5 +1,5 @@
 /**
- * @page Monte Carlo secuencial
+ * @page Secuencial Monte Carlo secuencial
  *
  * @brief Implementación del método de integración de Monte Carlo de punto medio en versión secuencial.
  *

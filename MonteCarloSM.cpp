@@ -1,5 +1,5 @@
 /**
- * @page Monte Carlo en memoria compartida
+ * @page Compartida Monte Carlo memoria compartida
  *
  * @brief Paralelizacion de método de Monte Carlo utilizando memoria compartida.
  *
@@ -47,8 +47,7 @@
  *
  * @date 2026
  */
-
-
+ 
 #include <cstdlib>
 #include <iostream>
 #include <vector>
