@@ -100,9 +100,6 @@ $(document).ready(function(){initNavTree('MonteCarloSM_8cpp.html',''); initResiz
   <div class="headertitle"><div class="title">Referencia del archivo MonteCarloSM.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Aproxima una integral múltiple utilizando el método de Monte Carlo con paralelización mediante OpenMP.  
-<a href="#details">Más...</a></p>
 <div class="textblock"><code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -114,7 +111,7 @@ Gráfico de dependencias incluidas en MonteCarloSM.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="MonteCarloSM_8cpp__incl.png" border="0" usemap="#aMonteCarloSM_8cpp" alt=""/></div>
 <map name="aMonteCarloSM_8cpp" id="aMonteCarloSM_8cpp">
-<area shape="rect" title="Aproxima una integral múltiple utilizando el método de Monte Carlo con paralelización mediante OpenMP..." alt="" coords="177,5,321,31"/>
+<area shape="rect" title=" " alt="" coords="177,5,321,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,71,104"/>
 <area shape="poly" title=" " alt="" coords="216,33,84,77,83,72,214,28"/>
 <area shape="rect" title=" " alt="" coords="95,79,175,104"/>
@@ -134,29 +131,7 @@ Gráfico de dependencias incluidas en MonteCarloSM.cpp:</div>
 </div>
 </div>
 <p><a href="MonteCarloSM_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
-<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Aproxima una integral múltiple utilizando el método de Monte Carlo con paralelización mediante OpenMP. </p>
-<p>Se generan <code>N</code> muestras aleatorias uniformemente distribuidas dentro de la región de integración. Cada hilo genera sus propias muestras, evalúa la función sobre ellas y acumula el resultado mediante una reducción paralela.</p>
-<p>Para evitar condiciones de carrera:</p><ul>
-<li>Cada hilo utiliza un generador de números aleatorios independiente basado en <code>std::mt19937</code>.</li>
-<li>Se emplea la cláusula <code>reduction(+:cont)</code> para combinar las sumas parciales de todos los hilos al finalizar la región paralela.</li>
-<li>Cada hilo dispone de un vector local para almacenar el punto generado, evitando accesos concurrentes a memoria compartida.</li>
-</ul>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vec</td><td>Vector con los intervalos de integración para cada dimensión. </td></tr>
-    <tr><td class="paramname">N</td><td>Número de muestras aleatorias. </td></tr>
-    <tr><td class="paramname">func</td><td>Función a integrar. Recibe un vector de coordenadas y devuelve el valor de la función en dicho punto.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Aproximación del valor de la integral.</dd></dl>
-<dl class="section note"><dt>Nota</dt><dd>La calidad de la aproximación mejora al aumentar el número de muestras aleatorias.</dd>
-<dd>
-La implementación utiliza OpenMP para distribuir las iteraciones del algoritmo entre los hilos disponibles. </dd></dl>
-
-<p class="definition">Definición en el archivo <a class="el" href="MonteCarloSM_8cpp_source.html">MonteCarloSM.cpp</a>.</p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

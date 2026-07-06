@@ -24,6 +24,6 @@ $$\bar{f} = \frac1{b-a}\int_a^b f(x) \text d x $$
 
 Entonces para calcular el valor de la integral de forma discreta, se tiene que: 
 
-$$\left<f\right>\approx\frac1N\sum_{i=1}^N f(x_i) \ \Rightarrow \ I\approx \frac{b-a}{N}\sum_{i=1}^N f(x_i).$$
+$$\bar{f}\approx\frac1N\sum_{i=1}^N f(x_i) \ \Rightarrow \ I\approx \frac{b-a}{N}\sum_{i=1}^N f(x_i).$$
 
-Donde los puntos $x_i$ son puntos pseudoaleatorios.
+Donde los puntos $$x_i$$ son puntos pseudoaleatorios.

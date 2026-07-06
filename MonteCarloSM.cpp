@@ -1,7 +1,8 @@
 /**
- * @page Compartida Monte Carlo memoria compartida
- *
- * @brief Paralelizacion de método de Monte Carlo utilizando memoria compartida.
+ * @file MonteCarloSM.cpp
+ * @defgroup MonteCarloOMP Implementación OpenMP
+ * @brief Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP).
+ * @{
  *
  * Esta implementación emplea OpenMP para paralelizar el cálculo de la
  * integral mediante la distribución de las muestras aleatorias entre
@@ -16,51 +17,47 @@
  * - Crea una región paralela con OpenMP.
  * - Inicializa un generador de números aleatorios independiente para cada
  *   hilo utilizando `std::mt19937`.
- * - Genera `N` muestras aleatorias distribuidas uniformemente dentro del
+ * - Genera N muestras aleatorias distribuidas uniformemente dentro del
  *   dominio de integración.
  * - Evalúa la función sobre cada muestra.
- * - Combina las contribuciones de todos los hilos mediante la cláusula
- *   `reduction`.
- * - Multiplica el promedio de las evaluaciones por el volumen de la región
- *   para obtener la aproximación de la integral.
+ * - Combina las contribuciones de todos los hilos mediante reducción.
+ * - Multiplica el promedio de las evaluaciones por el volumen de la región.
  *
  * ## Estrategia de paralelización
  *
- * Para garantizar la correcta ejecución en un entorno paralelo:
- * - Cada hilo utiliza un generador de números pseudoaleatorios propio.
- * - Las muestras se almacenan en vectores locales para evitar condiciones
- *   de carrera.
- * - La variable acumuladora se combina mediante una reducción de OpenMP.
- * - Las iteraciones del algoritmo se distribuyen automáticamente entre los
- *   hilos mediante `#pragma omp for`.
+ * - Cada hilo usa un generador independiente.
+ * - Se evita condición de carrera con variables locales.
+ * - Se usa `reduction(+:cont)` para sumar resultados.
+ * - `#pragma omp for` distribuye iteraciones automáticamente.
  *
  * ## Características
+ *
  * - Paralelización mediante OpenMP.
- * - Generación de números aleatorios con `std::random_device` y
- *   `std::mt19937`.
- * - Sincronización automática mediante reducción.
+ * - Generación de números aleatorios con `std::random_device` y `std::mt19937`.
+ * - Reducción automática de resultados.
  * - Escalable al número de hilos disponibles.
  *
  * ## Complejidad
- * - Tiempo: O((N · d) / p), donde `p` es el número de hilos.
- * - Espacio: O(d) por hilo para el almacenamiento temporal de las muestras.
+ *
+ * - Tiempo: O((N·d)/p)
+ * - Espacio: O(d) por hilo
  *
  * @date 2026
  */
- 
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <random>
-#include <omp.h>   ///< Biblioteca para programación paralela con OpenMP.
+#include <omp.h>
 
 #include "MonteCarlo.hpp"
 
 /**
+ * @ingroup MonteCarloOMP
  * @brief Constructor de la clase MonteCarlo.
  *
- * Inicializa la dimensión del espacio sobre el que se realizará la
- * integración mediante el método de Monte Carlo.
+ * Inicializa la dimensión del espacio de integración.
  *
  * @param d Dimensión del dominio de integración.
  */
@@ -69,24 +66,20 @@ MonteCarlo::MonteCarlo(int d){
 }
 
 /**
+ * @ingroup MonteCarloOMP
  * @brief Constructor por defecto.
  *
- * Este constructor está declarado como privado y evita la creación
- * de objetos sin especificar la dimensión del problema.
+ * No permite crear objetos sin dimensión válida.
  */
 MonteCarlo::MonteCarlo(){
     std::cout << "No es posible d = 0" << std::endl;
 }
 
 /**
+ * @ingroup MonteCarloOMP
  * @brief Constructor de copia.
  *
- * Crea un nuevo objeto a partir de otro objeto MonteCarlo.
- *
- * @param obj Objeto que se copiará.
- *
- * @note Actualmente la dimensión del objeto copiado únicamente se almacena
- * en una variable local y no se asigna al nuevo objeto.
+ * Copia otro objeto MonteCarlo.
  */
 MonteCarlo::MonteCarlo(const MonteCarlo &obj){
     std::cout << "constructor de copia invocado" << std::endl;
@@ -94,24 +87,16 @@ MonteCarlo::MonteCarlo(const MonteCarlo &obj){
 }
 
 /**
+ * @ingroup MonteCarloOMP
  * @brief Destructor de la clase.
- *
- * Muestra un mensaje indicando la destrucción del objeto.
  */
 MonteCarlo::~MonteCarlo(){
     std::cout << "Destructor invocado" << std::endl;
 }
 
 /**
- * @brief Calcula el volumen de la región de integración.
- *
- * El volumen corresponde al producto de las longitudes de los intervalos
- * de integración en cada dimensión.
- *
- * @param vec Vector que contiene los intervalos de integración.
- * Cada elemento representa un par (límite inferior, límite superior).
- *
- * @return Volumen total de la región de integración.
+ * @ingroup MonteCarloOMP
+ * @brief Calcula el volumen de integración.
  */
 double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec){
     double volumen = 1.0;
@@ -124,34 +109,8 @@ double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec
 }
 
 /**
- * @brief Aproxima una integral múltiple utilizando el método de Monte Carlo
- *        con paralelización mediante OpenMP.
- *
- * Se generan @p N muestras aleatorias uniformemente distribuidas dentro
- * de la región de integración. Cada hilo genera sus propias muestras,
- * evalúa la función sobre ellas y acumula el resultado mediante una
- * reducción paralela.
- *
- * Para evitar condiciones de carrera:
- * - Cada hilo utiliza un generador de números aleatorios independiente
- *   basado en `std::mt19937`.
- * - Se emplea la cláusula `reduction(+:cont)` para combinar las sumas
- *   parciales de todos los hilos al finalizar la región paralela.
- * - Cada hilo dispone de un vector local para almacenar el punto generado,
- *   evitando accesos concurrentes a memoria compartida.
- *
- * @param vec Vector con los intervalos de integración para cada dimensión.
- * @param N Número de muestras aleatorias.
- * @param func Función a integrar. Recibe un vector de coordenadas y devuelve
- * el valor de la función en dicho punto.
- *
- * @return Aproximación del valor de la integral.
- *
- * @note La calidad de la aproximación mejora al aumentar el número de
- * muestras aleatorias.
- *
- * @note La implementación utiliza OpenMP para distribuir las iteraciones
- * del algoritmo entre los hilos disponibles.
+ * @ingroup MonteCarloOMP
+ * @brief Aproxima la integral mediante Monte Carlo con OpenMP.
  */
 double MonteCarlo::integral(
     const std::vector<std::pair<double, double>>& vec,
@@ -162,32 +121,12 @@ double MonteCarlo::integral(
     double g = volumen / N;
     double cont = 0.0;
 
-    /**
-     * @file MonteCarloSM.cpp
-     * @brief Región paralela de OpenMP.
-     *
-     * Cada hilo:
-     * - Inicializa su propio generador de números aleatorios.
-     * - Crea un vector local para almacenar el punto generado.
-     * - Construye distribuciones uniformes para cada dimensión.
-     * - Evalúa una parte de las muestras asignadas mediante
-     *   `#pragma omp for`.
-     *
-     * La cláusula `reduction(+:cont)` suma automáticamente las
-     * contribuciones de todos los hilos al finalizar la región.
-     */
 #pragma omp parallel reduction(+:cont)
     {
-        /// Generador de entropía.
         std::random_device rd;
-
-        /// Generador Mersenne Twister independiente para cada hilo.
         std::mt19937 gen(rd() ^ omp_get_thread_num());
 
-        /// Vector local que almacena un punto del espacio de integración.
         std::vector<double> comp(dimension);
-
-        /// Distribuciones uniformes para cada dimensión.
         std::vector<std::uniform_real_distribution<double>> distribuciones;
 
         for (int j = 0; j < dimension; j++){
@@ -199,24 +138,17 @@ double MonteCarlo::integral(
             );
         }
 
-        /**
-         * @brief Distribución de las iteraciones entre los hilos.
-         *
-         * Cada hilo genera un subconjunto de las muestras aleatorias
-         * y acumula localmente la suma de las evaluaciones.
-         */
 #pragma omp for
         for (int i = 0; i < N; i++){
-
-            // Generación del punto aleatorio.
             for (int j = 0; j < dimension; j++){
                 comp[j] = distribuciones[j](gen);
             }
 
-            // Evaluación de la función.
             cont += func(comp);
         }
     }
 
     return g * cont;
 }
+
+/** @} */

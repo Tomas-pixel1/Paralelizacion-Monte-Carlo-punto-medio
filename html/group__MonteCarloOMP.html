@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: Monte Carlo memoria compartida</title>
+<title>Paralelización Monte Carlo de punto medio: Implementación OpenMP</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('Compartida.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('group__MonteCarloOMP.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,11 +96,14 @@ $(document).ready(function(){initNavTree('Compartida.html',''); initResizable();
 </div>
 </div>
 
-<div><div class="header">
-  <div class="headertitle"><div class="title">Monte Carlo memoria compartida</div></div>
+<div class="header">
+  <div class="headertitle"><div class="title">Implementación OpenMP</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Paralelizacion de método de Monte Carlo utilizando memoria compartida.</p>
+
+<p>Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP).  
+</p>
+<p>Implementación del método de Monte Carlo utilizando memoria compartida (OpenMP). </p>
 <p>Esta implementación emplea OpenMP para paralelizar el cálculo de la integral mediante la distribución de las muestras aleatorias entre múltiples hilos de ejecución. Cada hilo genera sus propios puntos de integración, evalúa la función proporcionada por el usuario y contribuye al resultado final mediante una reducción paralela.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Descripción</h2>
@@ -108,36 +111,35 @@ Descripción</h2>
 <li>Calcula el volumen de la región de integración.</li>
 <li>Crea una región paralela con OpenMP.</li>
 <li>Inicializa un generador de números aleatorios independiente para cada hilo utilizando <code>std::mt19937</code>.</li>
-<li>Genera <code>N</code> muestras aleatorias distribuidas uniformemente dentro del dominio de integración.</li>
+<li>Genera N muestras aleatorias distribuidas uniformemente dentro del dominio de integración.</li>
 <li>Evalúa la función sobre cada muestra.</li>
-<li>Combina las contribuciones de todos los hilos mediante la cláusula <code>reduction</code>.</li>
-<li>Multiplica el promedio de las evaluaciones por el volumen de la región para obtener la aproximación de la integral.</li>
+<li>Combina las contribuciones de todos los hilos mediante reducción.</li>
+<li>Multiplica el promedio de las evaluaciones por el volumen de la región.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Estrategia de paralelización</h2>
-<p>Para garantizar la correcta ejecución en un entorno paralelo:</p><ul>
-<li>Cada hilo utiliza un generador de números pseudoaleatorios propio.</li>
-<li>Las muestras se almacenan en vectores locales para evitar condiciones de carrera.</li>
-<li>La variable acumuladora se combina mediante una reducción de OpenMP.</li>
-<li>Las iteraciones del algoritmo se distribuyen automáticamente entre los hilos mediante <code>#pragma omp for</code>.</li>
+<ul>
+<li>Cada hilo usa un generador independiente.</li>
+<li>Se evita condición de carrera con variables locales.</li>
+<li>Se usa <code>reduction(+:cont)</code> para sumar resultados.</li>
+<li><code>#pragma omp for</code> distribuye iteraciones automáticamente.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Características</h2>
 <ul>
 <li>Paralelización mediante OpenMP.</li>
 <li>Generación de números aleatorios con <code>std::random_device</code> y <code>std::mt19937</code>.</li>
-<li>Sincronización automática mediante reducción.</li>
+<li>Reducción automática de resultados.</li>
 <li>Escalable al número de hilos disponibles.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Complejidad</h2>
 <ul>
-<li>Tiempo: O((N · d) / p), donde <code>p</code> es el número de hilos.</li>
-<li>Espacio: O(d) por hilo para el almacenamiento temporal de las muestras.</li>
+<li>Tiempo: O((N·d)/p)</li>
+<li>Espacio: O(d) por hilo</li>
 </ul>
 <dl class="section date"><dt>Fecha</dt><dd>2026 </dd></dl>
-</div></div><!-- contents -->
-</div><!-- PageDoc -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

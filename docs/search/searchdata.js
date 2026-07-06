@@ -5,7 +5,8 @@ var indexSectionsWithContent =
   2: "m",
   3: "imp~",
   4: "d",
-  5: "cdemps"
+  5: "imos",
+  6: "cmp"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "pages"
+  5: "groups",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Archivos",
   3: "Funciones",
   4: "Variables",
-  5: "Páginas"
+  5: "Módulos",
+  6: "Páginas"
 };
 

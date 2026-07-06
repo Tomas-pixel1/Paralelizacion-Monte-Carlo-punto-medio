@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['secuencial_0',['Monte Carlo secuencial',['../Secuencial.html',1,'']]]
+  ['secuencial_0',['Implementación secuencial',['../group__MonteCarloSec.html',1,'']]]
 ];

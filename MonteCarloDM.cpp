@@ -1,7 +1,8 @@
 /**
- * @page Distribuída Monte Carlo en memoria distribuída
- *
- * @brief Paralelizacion de método de Monte Carlo utilizando memoria distribuída.
+ * @file MonteCarloDM.cpp
+ * @defgroup MonteCarloMPI Implementación MPI
+ * @brief Implementación del método de Monte Carlo utilizando memoria distribuida.
+ * @{
  *
  * Esta implementación emplea MPI para distribuir el cálculo de la integral
  * entre múltiples procesos. Cada proceso genera una parte de las muestras
@@ -16,43 +17,40 @@
  * - Calcula el volumen de la región de integración.
  * - Obtiene el número de procesos participantes y el identificador
  *   (rank) del proceso actual.
- * - Distribuye las `N` muestras entre los procesos disponibles,
- *   equilibrando la carga cuando `N` no es divisible entre el número de
+ * - Distribuye las N muestras entre los procesos disponibles,
+ *   equilibrando la carga cuando N no es divisible entre el número de
  *   procesos.
  * - Cada proceso genera únicamente las muestras que le corresponden y
  *   evalúa la función sobre ellas.
- * - Las sumas parciales se combinan mediante `MPI_Reduce`.
+ * - Las sumas parciales se combinan mediante MPI_Reduce.
  * - El proceso raíz (rank 0) calcula y devuelve la aproximación final
  *   de la integral.
  *
  * ## Estrategia de paralelización
  *
- * La paralelización se realiza mediante distribución de procesos:
  * - Cada proceso ejecuta una parte independiente del algoritmo.
- * - La carga de trabajo se reparte de forma casi uniforme.
+ * - La carga de trabajo se reparte de forma equilibrada.
  * - No existe memoria compartida entre procesos.
- * - La comunicación se limita a la operación colectiva `MPI_Reduce`,
- *   utilizada para sumar las contribuciones parciales.
+ * - La comunicación se limita a la operación colectiva MPI_Reduce.
  *
  * ## Características
+ *
  * - Paralelización distribuida mediante MPI.
- * - Distribución equilibrada de las muestras entre procesos.
- * - Comunicación colectiva mediante `MPI_Reduce`.
- * - Escalable a múltiples nodos de un clúster o supercomputadora.
+ * - Distribución equilibrada de las muestras.
+ * - Comunicación colectiva mediante MPI_Reduce.
+ * - Escalable a múltiples nodos de un clúster.
  *
  * ## Requisitos
  *
- * Para utilizar esta implementación es necesario:
- * - Inicializar el entorno MPI mediante `MPI_Init()`.
- * - Ejecutar el programa con un lanzador compatible, por ejemplo
- *   `mpirun` o `mpiexec`.
- * - Finalizar el entorno MPI mediante `MPI_Finalize()`.
+ * - Inicializar el entorno MPI mediante MPI_Init().
+ * - Ejecutar con mpirun o mpiexec.
+ * - Finalizar mediante MPI_Finalize().
  *
  * ## Complejidad
- * - Tiempo: O((N · d) / p), donde `p` es el número de procesos MPI.
- * - Espacio: O(d) por proceso para almacenar cada muestra generada.
- * - Comunicación: una operación colectiva `MPI_Reduce` al finalizar el
- *   cálculo local.
+ *
+ * - Tiempo: O((N·d)/p)
+ * - Espacio: O(d)
+ * - Comunicación: una reducción colectiva MPI_Reduce.
  *
  * @date 2026
  */
@@ -60,12 +58,12 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-#include <mpi.h>   ///< Biblioteca para programación distribuida con MPI.
+#include <mpi.h>
 
 #include "MonteCarlo.hpp"
 
 /**
- * @file MonteCarloDM.cpp
+ * @ingroup MonteCarloMPI
  * @brief Constructor de la clase MonteCarlo.
  *
  * Inicializa la dimensión del espacio sobre el que se realizará
@@ -78,6 +76,7 @@ MonteCarlo::MonteCarlo(int d){
 }
 
 /**
+ * @ingroup MonteCarloMPI
  * @brief Constructor por defecto.
  *
  * Este constructor está declarado como privado y evita la creación
@@ -88,6 +87,7 @@ MonteCarlo::MonteCarlo(){
 }
 
 /**
+ * @ingroup MonteCarloMPI
  * @brief Constructor de copia.
  *
  * Crea un nuevo objeto como copia de otro objeto MonteCarlo.
@@ -103,6 +103,7 @@ MonteCarlo::MonteCarlo(const MonteCarlo &obj){
 }
 
 /**
+ * @ingroup MonteCarloMPI
  * @brief Destructor de la clase.
  *
  * Muestra un mensaje indicando la destrucción del objeto.
@@ -110,8 +111,8 @@ MonteCarlo::MonteCarlo(const MonteCarlo &obj){
 MonteCarlo::~MonteCarlo(){
     std::cout << "Destructor invocado" << std::endl;
 }
-
 /**
+ * @ingroup MonteCarloMPI
  * @brief Calcula el volumen de la región de integración.
  *
  * El volumen corresponde al producto de las longitudes de los
@@ -121,7 +122,9 @@ MonteCarlo::~MonteCarlo(){
  *
  * @return Volumen de la región de integración.
  */
-double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec){
+double MonteCarlo::Productorio(
+    const std::vector<std::pair<double, double>>& vec){
+
     double volumen = 1.0;
 
     for (int i = 0; i < dimension; i++){
@@ -132,6 +135,7 @@ double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec
 }
 
 /**
+ * @ingroup MonteCarloMPI
  * @brief Aproxima una integral múltiple mediante el método de Monte Carlo
  * utilizando paralelización distribuida con MPI.
  *
@@ -139,7 +143,7 @@ double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec
  * disponibles. Cada proceso genera sus propios puntos aleatorios,
  * evalúa la función sobre ellos y calcula una suma parcial.
  * Finalmente, todas las contribuciones se combinan mediante
- * `MPI_Reduce`, obteniendo la estimación final únicamente en el
+ * MPI_Reduce, obteniendo la estimación final únicamente en el
  * proceso raíz (rank 0).
  *
  * @param vec Vector que contiene los intervalos de integración para
@@ -155,7 +159,7 @@ double MonteCarlo::Productorio(const std::vector<std::pair<double, double>>& vec
  * de procesos, las muestras restantes se asignan a los primeros procesos.
  *
  * @note Es necesario haber inicializado previamente el entorno MPI
- * mediante `MPI_Init()` y finalizarlo posteriormente con `MPI_Finalize()`.
+ * mediante MPI_Init() y finalizarlo posteriormente con MPI_Finalize().
  */
 double MonteCarlo::integral(
     const std::vector<std::pair<double, double>>& vec,
@@ -200,10 +204,11 @@ double MonteCarlo::integral(
     std::vector<double> comp(vec.size());
 
     /**
+     * @ingroup MonteCarloMPI
      * @brief Generación local de muestras aleatorias.
      *
-     * Cada proceso genera únicamente las muestras correspondientes a su
-     * rango de trabajo y evalúa la función sobre ellas.
+     * Cada proceso genera únicamente las muestras correspondientes
+     * a su rango de trabajo y evalúa la función sobre ellas.
      */
     for (int i = start; i < end; i++){
 
@@ -219,8 +224,9 @@ double MonteCarlo::integral(
 
     /// Suma global de todas las contribuciones.
     double cont = 0.0;
-
-    /**
+  
+      /**
+     * @ingroup MonteCarloMPI
      * @brief Reducción global mediante MPI.
      *
      * Las sumas parciales calculadas por cada proceso se combinan
@@ -245,3 +251,4 @@ double MonteCarlo::integral(
     return 0;
 }
 
+/** @} */
