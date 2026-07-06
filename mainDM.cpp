@@ -20,7 +20,7 @@ for (int N = 1; N<1000000000; N*=10){
    double I = dimensiones.integral(limites, N, fx);
    double time2 = MPI_Wtime();
    if (rank == 0){
-      std::cout<<"Para "<<N<<"iteraciones -> "<<I<<std::endl;
+      std::cout<<"Para "<<N<<" iteraciones -> "<<I<<std::endl;
       std::cout<<"Tiempo --> "<<time2 - time1<<std::endl;
 }	
 }
