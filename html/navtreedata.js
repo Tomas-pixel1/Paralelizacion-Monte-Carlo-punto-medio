@@ -25,7 +25,11 @@
 var NAVTREE =
 [
   [ "Paralelización Monte Carlo de punto medio", "index.html", [
-    [ "README", "md_README.html", null ],
+    [ "Paralelizacion-Monte-Carlo-punto-medio", "md_M_xC3_xA9todo_01montecarlo_01.html", [
+      [ "Objetivos", "md_M_xC3_xA9todo_01montecarlo_01.html#autotoc_md1", null ],
+      [ "Método Monte Carlo de punto medio", "md_M_xC3_xA9todo_01montecarlo_01.html#autotoc_md2", null ]
+    ] ],
+    [ "Carlo secuencial", "Monte.html", null ],
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Índice de clases", "classes.html", null ],

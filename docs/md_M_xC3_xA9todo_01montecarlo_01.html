@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Paralelización Monte Carlo de punto medio: README</title>
+<title>Paralelización Monte Carlo de punto medio: Paralelizacion-Monte-Carlo-punto-medio</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,7 +71,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md_README.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_M_xC3_xA9todo_01montecarlo_01.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -97,10 +97,28 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">README</div></div>
+  <div class="headertitle"><div class="title">Paralelizacion-Monte-Carlo-punto-medio</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>#Paralelizacion-Monte-Carlo-punto-medio </p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> <b>Integrantes:</b></p>
+<p>Samuel Díaz Estrada - C12536 Sebastián Elizondo Peralta - C4E856 Sebastián Schult Revillat - C4J897 Tomás Salgado Gutiérrez - C27169</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Objetivos</h1>
+<ol type="1">
+<li>Emplear el método de Monte Carlo de punto medio para evaluar una integral multi dimesional. <br  />
+</li>
+<li>Estudiar como se comporta el error en funcion del número de puntos $N$. <br  />
+</li>
+<li>Acelerar el proceso por medio del paralelismo de memoria compartida y evaluar su escalabilidad.</li>
+<li>Acelerar el proceso por medio del paralelismo de memoria distribuida y evaluar su escalabilidad.</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Método Monte Carlo de punto medio</h1>
+<p>El método de Monte Carlo de punto medio busca la aproximación de una integral por medio del cálculo del promedio o punto medio de la función, dado por la siguiente ecuación:</p>
+<p>$$\bar{f} = \frac1{b-a}\int_a^b f(x) \text d x $$</p>
+<p>Entonces para calcular el valor de la integral de forma discreta, se tiene que:</p>
+<p>$$\left&lt;f\right&gt;\approx\frac1N\sum_{i=1}^N f(x_i) \ \Rightarrow \ I\approx \frac{b-a}{N}\sum_{i=1}^N f(x_i).$$</p>
+<p>Donde los puntos $x_i$ son puntos pseudoaleatorios. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['readme_0',['README',['../md_README.html',1,'']]]
+  ['carlo_20punto_20medio_0',['Paralelizacion-Monte-Carlo-punto-medio',['../md_M_xC3_xA9todo_01montecarlo_01.html',1,'']]],
+  ['carlo_20secuencial_1',['Carlo secuencial',['../Monte.html',1,'']]]
 ];
